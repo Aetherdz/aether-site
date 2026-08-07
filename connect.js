@@ -127,7 +127,7 @@
       if (app) app.hidden = false;
       if (session.provider) {
         var oauth = document.getElementById("oauth-title");
-        if (oauth) oauth.textContent = "Connected with " + (session.provider === "github" ? "GitHub" : "Google");
+        if (oauth) oauth.textContent = "Signing in with " + (session.provider === "github" ? "GitHub" : "Google") + " — complete the device flow in your terminal";
       }
     } else {
       if (gate) gate.hidden = false;

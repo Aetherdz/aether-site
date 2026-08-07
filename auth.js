@@ -91,7 +91,7 @@
         if (provider === "github" || provider === "google") {
           window.AetherAuth.signInWithProvider(provider);
         }
-        window.location.href = "./connect.html";
+        window.location.href = "./connect.html#device-panel";
       });
     });
 

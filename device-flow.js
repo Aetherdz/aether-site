@@ -51,19 +51,34 @@
     }, 1600);
   }
 
+  function openPanel(provider) {
+    var cfg = PROVIDERS[provider];
+    if (!cfg) return;
+    cmdEl.textContent = cfg.command;
+    urlEl.textContent = cfg.verify;
+    panel.hidden = false;
+    step1.textContent = "Step 1 — copy this command and run it in your terminal:";
+    step2.textContent = "Step 2 — the terminal shows a one-time code. Open the verification page and enter it:";
+    statusEl.textContent =
+      "The terminal polls automatically. Your token is stored on your machine (" +
+      "~/.config/aether/device-tokens.json), never in this browser.";
+  }
+
+  function autoOpenFromHash() {
+    if (window.location.hash !== "#device-panel") return;
+    var session = window.AetherAuth && window.AetherAuth.getSession();
+    var provider = session && session.provider;
+    if (provider === "github" || provider === "google") {
+      openPanel(provider);
+    }
+  }
+
   document.querySelectorAll(".oauth-btn").forEach(function (btn) {
     btn.addEventListener("click", function () {
       var provider = btn.getAttribute("data-device");
       var cfg = PROVIDERS[provider];
       if (!cfg) return;
-      cmdEl.textContent = cfg.command;
-      urlEl.textContent = cfg.verify;
-      panel.hidden = false;
-      step1.textContent = "Step 1 — copy this command and run it in your terminal:";
-      step2.textContent = "Step 2 — the terminal shows a one-time code. Open the verification page and enter it:";
-      statusEl.textContent =
-        "The terminal polls automatically. Your token is stored on your machine (" +
-        "~/.config/aether/device-tokens.json), never in this browser.";
+      openPanel(provider);
       copyText(cfg.command).then(function () {
         flash(btnCopy, "Copied");
       }).catch(function () {});
@@ -79,4 +94,6 @@
   btnOpen.addEventListener("click", function () {
     window.open(urlEl.textContent, "_blank", "noopener");
   });
+
+  autoOpenFromHash();
 })();
