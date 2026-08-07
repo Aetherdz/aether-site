@@ -1,6 +1,6 @@
 # Aether — site
 
-Marketing site for [Aether](https://github.com/Aetherdz/aether-cli), the cross-platform terminal AI coding agent. Published on GitHub Pages.
+Marketing site for [Aether](https://github.com/Aetherdz/aethercode), the cross-platform terminal AI coding agent. Published on GitHub Pages.
 
 ## Pages
 
@@ -19,7 +19,7 @@ Marketing site for [Aether](https://github.com/Aetherdz/aether-cli), the cross-p
 
 ## Design
 
-Dark OLED, JetBrains Mono, violet-to-cyan gradient. Brand assets (`logo.svg`, `emblem.svg`) live in the [aether-cli](https://github.com/Aetherdz/aether-cli) repo.
+Dark OLED, JetBrains Mono, violet-to-cyan gradient. Brand assets (`logo.svg`, `emblem.svg`) live in the [aethercode](https://github.com/Aetherdz/aethercode) repo.
 
 ## Local dev
 

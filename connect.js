@@ -125,6 +125,10 @@
     if (session) {
       if (gate) gate.hidden = true;
       if (app) app.hidden = false;
+      if (session.provider) {
+        var oauth = document.getElementById("oauth-title");
+        if (oauth) oauth.textContent = "Connected with " + (session.provider === "github" ? "GitHub" : "Google");
+      }
     } else {
       if (gate) gate.hidden = false;
       if (app) app.hidden = true;

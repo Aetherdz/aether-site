@@ -29,6 +29,12 @@
       saveSession(session);
       return session;
     },
+    signInWithProvider: function (provider) {
+      var label = provider === "github" ? "GitHub" : "Google";
+      var session = { email: "you@" + provider + ".com", name: label + " user", provider: provider, createdAt: Date.now() };
+      saveSession(session);
+      return session;
+    },
     signOut: function () {
       clearSession();
       window.location.href = "./index.html";
@@ -77,6 +83,17 @@
 
     tabSignin.addEventListener("click", function () { setMode("signin"); });
     tabSignup.addEventListener("click", function () { setMode("signup"); });
+
+    document.querySelectorAll(".oauth-login .oauth-btn").forEach(function (btn) {
+      btn.addEventListener("click", function (event) {
+        event.preventDefault();
+        var provider = btn.getAttribute("data-provider");
+        if (provider === "github" || provider === "google") {
+          window.AetherAuth.signInWithProvider(provider);
+        }
+        window.location.href = "./connect.html";
+      });
+    });
 
     form.addEventListener("submit", function (event) {
       event.preventDefault();
