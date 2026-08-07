@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 140" width="500" height="140" role="img" aria-label="Aether logo">
+  <defs>
+    <style>
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+      .tag  { fill: #94a3b8; }
+    </style>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="wordmark" gradientUnits="userSpaceOnUse" x1="30" y1="46" x2="212" y2="92">
+      <stop offset="0" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="fade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#7c3aed" stop-opacity="0.03"/>
+    </linearGradient>
+  </defs>
+
+  <!-- brand panel -->
+  <rect x="1" y="1" width="498" height="138" rx="14" fill="#0a0a14" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- faint diagonal wash behind the wordmark -->
+  <rect x="24" y="30" width="268" height="64" rx="8" fill="url(#fade)"/>
+
+  <!-- sparse light particles -->
+  <circle cx="30" cy="34" r="2" fill="#22d3ee" opacity="0.55"/>
+  <circle cx="126" cy="26" r="1.6" fill="#7c3aed" opacity="0.6"/>
+  <g stroke="#22d3ee" stroke-width="1.6" stroke-linecap="round" opacity="0.45">
+    <line x1="182" y1="34" x2="182" y2="40"/>
+    <line x1="179" y1="37" x2="185" y2="37"/>
+  </g>
+  <circle cx="300" cy="24" r="1.4" fill="#e0e7ff" opacity="0.7"/>
+  <circle cx="348" cy="34" r="2" fill="#22d3ee" opacity="0.4"/>
+  <g stroke="#a78bfa" stroke-width="1.6" stroke-linecap="round" opacity="0.5">
+    <line x1="90" y1="112" x2="90" y2="118"/>
+    <line x1="87" y1="115" x2="93" y2="115"/>
+  </g>
+  <circle cx="248" cy="116" r="1.6" fill="#22d3ee" opacity="0.35"/>
+  <circle cx="462" cy="28" r="1.6" fill="#a78bfa" opacity="0.55"/>
+  <circle cx="470" cy="112" r="1.4" fill="#22d3ee" opacity="0.4"/>
+
+  <!-- emblem: spark star inside a diamond ring -->
+  <path d="M 428 40 L 466 70 L 428 100 L 390 70 Z" fill="none" stroke="#22d3ee" stroke-width="1.5" opacity="0.35"/>
+  <path d="M 428 54 L 434 66 L 446 70 L 434 74 L 428 86 L 422 74 L 410 70 L 422 66 Z" fill="url(#brand)"/>
+  <circle cx="428" cy="70" r="2.4" fill="#0a0a14"/>
+
+  <!-- wordmark -->
+  <text class="mono" x="30" y="92" font-size="46" font-weight="800" letter-spacing="2" fill="url(#wordmark)">Aether</text>
+
+  <!-- tagline -->
+  <text class="mono tag" x="30" y="124" font-size="13" letter-spacing="4">THE MEDIUM BETWEEN STARS</text>
+</svg>

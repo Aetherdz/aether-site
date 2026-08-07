@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign in — Aether</title>
+  <meta name="description" content="Sign in to your Aether account. Manage providers, API keys, and sync your terminal.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="./emblem.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body class="auth-body">
+  <a class="skip-link" href="#auth-main">Skip to content</a>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="nav-brand" href="./index.html" aria-label="Aether home">
+        <img src="./emblem.svg" alt="" width="34" height="34" class="nav-emblem">
+        <img src="./logo.svg" alt="" width="140" height="40">
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="./index.html#features">Features</a>
+        <a href="./index.html#providers">Providers</a>
+        <a href="./index.html#quickstart">Quickstart</a>
+      </nav>
+      <a class="btn btn-ghost nav-cta" href="https://github.com/Aetherdz/aether-cli" rel="noopener" target="_blank">
+        <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 1.5a6.5 6.5 0 0 0-2.06 12.66c.33.06.45-.14.45-.31v-1.1c-1.83.4-2.22-.88-2.22-.88-.3-.76-.73-.96-.73-.96-.6-.41.04-.4.04-.4.66.05 1 .68 1 .68.59 1 1.55.71 1.93.54.06-.42.23-.71.42-.87-1.47-.17-3.02-.74-3.02-3.28 0-.73.26-1.32.68-1.79-.07-.17-.3-.85.06-1.77 0 0 .56-.18 1.82.68a6.3 6.3 0 0 1 3.32 0c1.26-.86 1.82-.68 1.82-.68.36.92.13 1.6.06 1.77.43.47.68 1.06.68 1.79 0 2.55-1.55 3.11-3.03 3.27.24.2.45.61.45 1.24v1.83c0 .18.12.38.45.31A6.5 6.5 0 0 0 8 1.5Z"/></svg>
+        GitHub
+      </a>
+    </div>
+  </header>
+
+  <main id="auth-main" class="auth-main">
+    <div class="auth-card">
+      <img src="./emblem.svg" alt="" width="64" height="64" class="auth-emblem">
+      <h1 class="auth-title" id="auth-title">Sign in to Aether</h1>
+      <p class="auth-sub" id="auth-sub">Sync your providers and keys across the terminal and the web.</p>
+
+      <div class="auth-tabs" role="tablist" aria-label="Sign in or sign up">
+        <button class="auth-tab active" id="tab-signin" type="button" role="tab" aria-selected="true" aria-controls="panel-signin">Sign in</button>
+        <button class="auth-tab" id="tab-signup" type="button" role="tab" aria-selected="false" aria-controls="panel-signup">Create account</button>
+      </div>
+
+      <form class="auth-form" id="auth-form" novalidate>
+        <div class="field" id="field-name" hidden>
+          <label for="name">Display name</label>
+          <input type="text" id="name" name="name" autocomplete="name" placeholder="Ada Lovelace">
+          <p class="field-error" id="err-name"></p>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required>
+          <p class="field-error" id="err-email"></p>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" autocomplete="current-password" minlength="8" placeholder="At least 8 characters" required>
+          <p class="field-help" id="help-password">At least 8 characters.</p>
+          <p class="field-error" id="err-password"></p>
+        </div>
+
+        <p class="form-alert" id="form-alert" role="alert" hidden></p>
+
+        <button class="btn btn-primary auth-submit" id="auth-submit" type="submit">Sign in</button>
+      </form>
+
+      <p class="auth-note">Demo mode: accounts and keys are stored only in this browser (localStorage). Nothing is sent to a server. In the real product this page is backed by the Aether cloud.</p>
+
+      <div class="auth-terminal" aria-hidden="true">
+        <pre>aether &gt; auth login
+signing you in... <span class="t-green">done</span>
+providers synced: zen (free), 0 connected</pre>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer auth-footer">
+    <div class="footer-inner">
+      <p>Built by <a href="https://github.com/Aetherdz" rel="noopener" target="_blank">Aetherdz</a>. MIT license.</p>
+      <p class="footer-motto">Building tools that break assumptions.</p>
+    </div>
+  </footer>
+
+  <script src="./auth.js"></script>
+</body>
+</html>

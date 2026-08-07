@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# AETHER terminal AI coding agent
+# Site: https://aetherdz.github.io/aether-cli/

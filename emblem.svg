@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Aether emblem">
+  <defs>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="star" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.42" r="0.65">
+      <stop offset="0" stop-color="#7c3aed" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#0a0a14" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- rounded-square brand panel -->
+  <rect x="16" y="16" width="480" height="480" rx="96" fill="#0a0a14" stroke="#1e293b" stroke-width="6"/>
+
+  <!-- inner glow wash -->
+  <rect x="16" y="16" width="480" height="480" rx="96" fill="url(#glow)"/>
+
+  <!-- sparse light particles -->
+  <circle cx="136" cy="150" r="5" fill="#22d3ee" opacity="0.5"/>
+  <circle cx="392" cy="138" r="4" fill="#7c3aed" opacity="0.55"/>
+  <circle cx="400" cy="368" r="4.5" fill="#a78bfa" opacity="0.5"/>
+  <circle cx="130" cy="352" r="3.5" fill="#22d3ee" opacity="0.4"/>
+  <g stroke="#22d3ee" stroke-width="4" stroke-linecap="round" opacity="0.4">
+    <line x1="176" y1="108" x2="176" y2="124"/>
+    <line x1="168" y1="116" x2="184" y2="116"/>
+  </g>
+  <g stroke="#a78bfa" stroke-width="4" stroke-linecap="round" opacity="0.45">
+    <line x1="352" y1="398" x2="352" y2="414"/>
+    <line x1="344" y1="406" x2="360" y2="406"/>
+  </g>
+
+  <!-- diamond ring -->
+  <path d="M 256 92 L 420 256 L 256 420 L 92 256 Z" fill="none" stroke="url(#ring)" stroke-width="14" stroke-linejoin="round"/>
+
+  <!-- inner diamond -->
+  <path d="M 256 140 L 372 256 L 256 372 L 140 256 Z" fill="#12121c" stroke="#1e293b" stroke-width="4" stroke-linejoin="round"/>
+
+  <!-- spark star (8-point) -->
+  <path d="M 256 168 L 272 240 L 344 256 L 272 272 L 256 344 L 240 272 L 168 256 L 240 240 Z" fill="url(#star)"/>
+
+  <!-- center core -->
+  <circle cx="256" cy="256" r="22" fill="#0a0a14"/>
+  <circle cx="256" cy="256" r="9" fill="#22d3ee"/>
+</svg>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connect account — Aether</title>
+  <meta name="description" content="Connect your LLM providers to Aether. Paste API keys once, use them everywhere.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="./emblem.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body class="auth-body">
+  <a class="skip-link" href="#connect-main">Skip to content</a>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="nav-brand" href="./index.html" aria-label="Aether home">
+        <img src="./emblem.svg" alt="" width="34" height="34" class="nav-emblem">
+        <img src="./logo.svg" alt="" width="140" height="40">
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="./index.html#features">Features</a>
+        <a href="./index.html#providers">Providers</a>
+        <a href="./index.html#quickstart">Quickstart</a>
+      </nav>
+      <span class="user-chip" id="user-chip" hidden></span>
+      <a class="btn btn-ghost nav-cta" href="https://github.com/Aetherdz/aether-cli" rel="noopener" target="_blank">
+        <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 1.5a6.5 6.5 0 0 0-2.06 12.66c.33.06.45-.14.45-.31v-1.1c-1.83.4-2.22-.88-2.22-.88-.3-.76-.73-.96-.73-.96-.6-.41.04-.4.04-.4.66.05 1 .68 1 .68.59 1 1.55.71 1.93.54.06-.42.23-.71.42-.87-1.47-.17-3.02-.74-3.02-3.28 0-.73.26-1.32.68-1.79-.07-.17-.3-.85.06-1.77 0 0 .56-.18 1.82.68a6.3 6.3 0 0 1 3.32 0c1.26-.86 1.82-.68 1.82-.68.36.92.13 1.6.06 1.77.43.47.68 1.06.68 1.79 0 2.55-1.55 3.11-3.03 3.27.24.2.45.61.45 1.24v1.83c0 .18.12.38.45.31A6.5 6.5 0 0 0 8 1.5Z"/></svg>
+        GitHub
+      </a>
+    </div>
+  </header>
+
+  <main id="connect-main" class="auth-main">
+    <div class="connect-card">
+      <img src="./emblem.svg" alt="" width="64" height="64" class="auth-emblem">
+      <h1 class="auth-title">Connect your account</h1>
+      <p class="auth-sub">Your keys never touch this site. Copy the command, run it in your terminal, and Aether writes the key into <code>~/.config/aether/.env</code> with 0600 permissions — on your machine only.</p>
+
+      <div class="security-banner" role="note">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+        <span>Keys are stored locally by the CLI at <code>~/.config/aether/.env</code> (0600). Nothing is saved in this browser, ever.</span>
+      </div>
+
+      <div class="gate" id="auth-gate">
+        <p class="gate-text">Sign in first to see your sync state.</p>
+        <a class="btn btn-primary" href="./login.html">Go to sign in</a>
+      </div>
+
+      <div id="connect-app" hidden>
+        <div class="provider-grid" id="provider-grid" role="list"></div>
+
+        <div class="export-row">
+          <div>
+            <h2 class="export-title">Set up every provider</h2>
+            <p class="export-sub">Run these in your terminal. Keys stay on your machine.</p>
+          </div>
+          <button class="btn btn-primary" id="btn-copy-all" type="button">Copy all commands</button>
+        </div>
+
+        <pre class="export-cmds" id="export-cmds" aria-live="polite"></pre>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer auth-footer">
+    <div class="footer-inner">
+      <p>Built by <a href="https://github.com/Aetherdz" rel="noopener" target="_blank">Aetherdz</a>. MIT license.</p>
+      <p class="footer-motto">Building tools that break assumptions.</p>
+    </div>
+  </footer>
+
+  <script src="./auth.js"></script>
+  <script src="./connect.js"></script>
+</body>
+</html>
