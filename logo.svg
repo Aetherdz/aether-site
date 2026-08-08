@@ -1,14 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 144" width="520" height="144" role="img" aria-label="Aether — terminal AI coding agent">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 280" width="1200" height="280" role="img" aria-label="Aether — terminal AI coding agent">
   <defs>
     <style>
       .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "JetBrains Mono", "Liberation Mono", monospace; }
       .word { font-weight: 800; }
-      .tag  { fill: #64748b; }
+      .tag  { fill: #94a3b8; }
     </style>
     <linearGradient id="wgrad" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="#f8fafc"/>
-      <stop offset="0.62" stop-color="#e2e8f0"/>
-      <stop offset="0.68" stop-color="#7c3aed"/>
+      <stop offset="0.6" stop-color="#e2e8f0"/>
+      <stop offset="0.66" stop-color="#7c3aed"/>
       <stop offset="1" stop-color="#22d3ee"/>
     </linearGradient>
     <linearGradient id="burst" x1="0" y1="0" x2="1" y2="1">
@@ -24,25 +24,30 @@
       <stop offset="1" stop-color="#0a0a14"/>
     </radialGradient>
     <g id="ray">
-      <path d="M70 10 L77 54 L70 64 L63 54 Z" fill="url(#burst)"/>
+      <path d="M140 20 L154 108 L140 128 L126 108 Z" fill="url(#burst)"/>
     </g>
     <g id="spark">
-      <path d="M70 34 L82 64 L112 70 L82 76 L70 106 L58 76 L28 70 L58 64 Z" fill="url(#bRev)"/>
+      <path d="M140 58 L168 118 L228 128 L168 138 L140 198 L112 138 L52 128 L112 118 Z" fill="url(#bRev)"/>
     </g>
   </defs>
 
-  <!-- starburst mark (Claude-style) -->
+  <!-- starburst mark -->
   <use href="#ray"/>
-  <use href="#ray" transform="rotate(90 70 64)"/>
-  <use href="#ray" transform="rotate(180 70 64)"/>
-  <use href="#ray" transform="rotate(270 70 64)"/>
+  <use href="#ray" transform="rotate(90 140 128)"/>
+  <use href="#ray" transform="rotate(180 140 128)"/>
+  <use href="#ray" transform="rotate(270 140 128)"/>
   <use href="#spark"/>
-  <circle cx="70" cy="64" r="9" fill="url(#core)"/>
-  <circle cx="70" cy="64" r="3.4" fill="#22d3ee"/>
+  <circle cx="140" cy="128" r="18" fill="url(#core)"/>
+  <circle cx="140" cy="128" r="6.5" fill="#22d3ee"/>
+  <circle cx="136" cy="123" r="2.2" fill="#e0f2fe" opacity="0.9"/>
+
+  <!-- orbit hint -->
+  <ellipse cx="140" cy="128" rx="104" ry="40" fill="none" stroke="#7c3aed" stroke-width="2.5" opacity="0.35" transform="rotate(-16 140 128)"/>
+  <circle cx="72" cy="104" r="4" fill="#22d3ee" opacity="0.75"/>
 
   <!-- wordmark -->
-  <text class="mono word" x="118" y="86" font-size="52" letter-spacing="2" fill="url(#wgrad)">Aether</text>
+  <text class="mono word" x="252" y="172" font-size="104" letter-spacing="3" fill="url(#wgrad)">Aether</text>
 
   <!-- tagline -->
-  <text class="mono tag" x="121" y="120" font-size="12.5" letter-spacing="5.5">THE MEDIUM BETWEEN STARS</text>
+  <text class="mono tag" x="256" y="240" font-size="21" letter-spacing="11">THE MEDIUM BETWEEN STARS</text>
 </svg>

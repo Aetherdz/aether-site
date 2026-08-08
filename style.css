@@ -121,6 +121,14 @@ code {
   letter-spacing: 0.5px;
   color: var(--text);
 }
+
+.nav-emblem {
+  display: block;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 6px rgba(124, 58, 237, 0.45));
+}
 .nav-ver {
   font-size: 11px;
   color: var(--dim);
@@ -249,6 +257,20 @@ code {
   margin: 0 auto;
   padding: 4.5rem 1.25rem 3rem;
   text-align: center;
+}
+
+.hero-logo {
+  display: block;
+  width: min(560px, 100%);
+  height: auto;
+  margin: 0 auto 1.75rem;
+  filter: drop-shadow(0 0 28px rgba(124, 58, 237, 0.35)) drop-shadow(0 0 64px rgba(34, 211, 238, 0.16));
+}
+[data-theme="light"] .hero-logo {
+  background: #0a0a14;
+  border-radius: 14px;
+  padding: 0.6rem 1rem;
+  filter: drop-shadow(0 0 18px rgba(124, 58, 237, 0.25));
 }
 
 .overline {
