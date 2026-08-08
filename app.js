@@ -13,6 +13,7 @@
     ["sessions", "browse/resume sessions"],
     ["sessions resume <id>", "reopen a session"],
     ["stats", "token usage, all sessions"],
+    ["recall <phrase>", "search all past sessions"],
     ["mcp", "list connected MCP servers"],
     ["doctor", "health check"],
     ["status", "model + cost"],
