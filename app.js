@@ -3,7 +3,7 @@
 (function () {
   "use strict";
 
-  /* ---------- data: command list (16 commands) ---------- */
+  /* ---------- data: command list ---------- */
 
   var COMMANDS = [
     ["chat", "start a session"],
@@ -25,6 +25,10 @@
     ["logout", "remove API key"],
     ["keys", "list stored keys"],
     ["cost", "session cost"],
+    ["sync setup gist", "free cross-device sync via GitHub"],
+    ["sync setup folder <path>", "sync via Dropbox/Drive/Nextcloud"],
+    ["sync push", "upload sessions"],
+    ["sync pull", "download + merge sessions"],
     ["help", "all commands"]
   ];
 

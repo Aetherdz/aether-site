@@ -6,7 +6,7 @@
   <title>Aether — terminal AI coding agent</title>
   <meta name="description" content="Aether is a cross-platform terminal AI coding agent. Chat with LLMs, call tools, and write code straight from your terminal. Free, no API key required.">
   <meta property="og:title" content="Aether — terminal AI coding agent">
-  <meta property="og:description" content="Your terminal, now an AI agent. Free no-key default provider, 8+ providers, swarm subagents, low RAM.">
+  <meta property="og:description" content="Your terminal, now an AI agent. Free no-key default provider, 8+ providers, swarm subagents, cross-device session sync, low RAM.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://aetherdz.github.io/aether-site/">
   <meta name="theme-color" content="#0a0a14">
@@ -25,7 +25,7 @@
     <div class="nav-inner">
       <a class="nav-brand" href="#top" aria-label="Aether home">
         <span class="nav-word">aether</span>
-        <span class="nav-ver">v0.3.0</span>
+        <span class="nav-ver">v0.4.0</span>
       </a>
       <nav class="nav-links" id="nav-links" aria-label="Primary">
         <a href="#features">Features</a>
@@ -46,7 +46,7 @@
   <main id="main">
     <section class="hero" id="top">
       <div class="hero-inner">
-        <p class="overline"><span class="dot dot-cyan"></span>Aether v0.3.0</p>
+        <p class="overline"><span class="dot dot-cyan"></span>Aether v0.4.0</p>
         <h1>Your terminal,<br>now an <span class="grad">AI agent</span>.</h1>
         <p class="hero-sub">Chat with LLMs, call tools, and write code straight from your terminal.
           Free. No API key required. Low RAM. Cross-platform.</p>
@@ -140,6 +140,11 @@
           <h3>Cross-platform</h3>
           <p>Windows, macOS, and Linux from the start. One Node CLI with a terminal-native UI — no browser, no sandbox, no platform-specific installers.</p>
         </article>
+        <article class="card card-wide">
+          <div class="card-head"><span class="card-index">09</span><span class="card-rule" aria-hidden="true"></span></div>
+          <h3>Sync across devices</h3>
+          <p>Free sessions sync. Point <code>aether sync setup</code> at a private GitHub gist or any synced folder (Dropbox, Drive, Nextcloud, Syncthing), then <code>aether sync push</code> / <code>aether sync pull</code>. Continue on another machine where you left off — no account, no subscription, line-level merge so nothing is lost.</p>
+        </article>
       </div>
     </section>
 
@@ -200,7 +205,7 @@
       <div class="power-row">
         <p class="power-label">POWER USER</p>
         <div class="power-cmds">
-          <code>aether doctor</code><code>aether stats</code><code>aether recall "phrase"</code><code>aether mcp</code><code>aether sessions resume &lt;id&gt;</code><code>aether use zen/claude-sonnet-5</code>
+          <code>aether doctor</code><code>aether stats</code><code>aether recall "phrase"</code><code>aether sync pull</code><code>aether sessions resume &lt;id&gt;</code><code>aether use zen/claude-sonnet-5</code>
         </div>
       </div>
     </section>
@@ -208,7 +213,7 @@
     <section class="section" id="commands">
       <div class="section-head">
         <p class="overline">COMMANDS</p>
-        <h2>Twenty commands. Zero clutter.</h2>
+        <h2>Every command, zero clutter.</h2>
       </div>
       <div class="commands-grid" id="commands-grid"></div>
     </section>
