@@ -6,14 +6,11 @@ Marketing site for [Aether](https://github.com/Aetherdz/aethercode), the cross-p
 
 - `index.html` — landing page (hero, bento features, providers, quickstart, commands)
 - `swarm.html` — Swarm Mission Control: type a mission, watch parallel subagents decompose and merge
-- `login.html` — sign-in / sign-up demo (client-side only)
-- `connect.html` — connect providers: generates `aether login <provider>` commands
 - `404.html`, `robots.txt`
 
 ## Security model
 
-- **API keys never touch this site.** The connect page only generates terminal commands (`aether login openai`). Keys are written by the CLI into `~/.config/aether/.env` (0600) on the user's machine.
-- **No passwords stored.** The auth demo persists only `{ name, email }` in localStorage, purely to demo the session flow. The password field is validated and discarded.
+- **API keys never touch this site.** Keys live only in `~/.config/aether/.env` (0600) on the user's machine, written by the CLI.
 - **Strict CSP** on every page: `default-src 'self'`, `script-src 'self'`, `connect-src 'none'`, `object-src 'none'`. No external scripts; only Google Fonts styles.
 - **No XSS vectors**: all DOM updates use `textContent`, never `innerHTML`/`eval`.
 
@@ -24,7 +21,6 @@ Dark OLED, JetBrains Mono, violet-to-cyan gradient. Brand assets (`logo.svg`, `e
 ## Local dev
 
 ```bash
-cd docs
 python3 -m http.server 8000
 ```
 
