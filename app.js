@@ -131,7 +131,7 @@
     var hint = document.getElementById("copy-hint");
     if (primary && hint) {
       primary.addEventListener("click", function () {
-        copyText("npm install -g aether");
+        copyText("npm install -g aetherdz");
         hint.textContent = "copied!";
         setTimeout(function () { hint.textContent = "copy"; }, 1800);
       });
@@ -141,6 +141,34 @@
     others.forEach(function (btn) {
       btn.addEventListener("click", function () {
         copyText(btn.getAttribute("data-copy"));
+      });
+    });
+  }
+
+  /* ---------- install method tabs ---------- */
+
+  function setupInstallTabs() {
+    var tabs = document.querySelectorAll(".install-tabs");
+    tabs.forEach(function (group) {
+      var buttons = group.querySelectorAll(".install-tab");
+      buttons.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var method = btn.getAttribute("data-method");
+          buttons.forEach(function (b) {
+            var on = b === btn;
+            b.classList.toggle("active", on);
+            b.setAttribute("aria-selected", on ? "true" : "false");
+          });
+          var pane = group.parentElement.querySelector(".install-code[data-pane='" + method + "']");
+          if (pane) {
+            var siblings = group.parentElement.querySelectorAll(".install-code");
+            siblings.forEach(function (p) {
+              var on = p === pane;
+              p.classList.toggle("active", on);
+              p.hidden = !on;
+            });
+          }
+        });
       });
     });
   }
@@ -186,6 +214,30 @@
     targets.forEach(function (t) { t.classList.add("reveal"); io.observe(t); });
   }
 
+  /* ---------- mobile nav toggle ---------- */
+
+  function setupNavToggle() {
+    var toggle = document.getElementById("nav-toggle");
+    var links = document.getElementById("nav-links");
+    if (!toggle || !links) return;
+    toggle.addEventListener("click", function () {
+      var open = links.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    links.addEventListener("click", function (e) {
+      if (e.target.tagName === "A") {
+        links.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+      }
+    });
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 860) {
+        links.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
   /* ---------- init ---------- */
 
   document.addEventListener("DOMContentLoaded", function () {
@@ -193,5 +245,7 @@
     runTerminal();
     setupCopy();
     setupReveal();
+    setupInstallTabs();
+    setupNavToggle();
   });
 })();

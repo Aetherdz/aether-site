@@ -20,15 +20,19 @@
   <header class="nav">
     <div class="nav-inner">
       <a class="nav-brand" href="./index.html" aria-label="Aether home">
-        <img src="./emblem.svg" alt="" width="34" height="34" class="nav-emblem">
-        <img src="./logo.svg" alt="" width="140" height="40">
+        <span class="nav-word">aether</span>
       </a>
-      <nav class="nav-links" aria-label="Primary">
+      <nav class="nav-links" id="nav-links" aria-label="Primary">
         <a href="./index.html#features">Features</a>
         <a href="./index.html#providers">Providers</a>
         <a href="./index.html#quickstart">Quickstart</a>
       </nav>
-      <a class="btn btn-ghost nav-cta" href="https://github.com/Aetherdz/aethercode" rel="noopener" target="_blank">GitHub</a>
+      <div class="nav-actions">
+        <a class="btn btn-ghost nav-cta" href="https://github.com/Aetherdz/aethercode" rel="noopener" target="_blank">GitHub</a>
+        <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -78,5 +82,6 @@
   </footer>
 
   <script src="./swarm.js"></script>
+  <script src="./app.js"></script>
 </body>
 </html>

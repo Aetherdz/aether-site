@@ -23,17 +23,22 @@
   <header class="nav">
     <div class="nav-inner">
       <a class="nav-brand" href="#top" aria-label="Aether home">
-        <img src="./emblem.svg" alt="" width="34" height="34" class="nav-emblem">
-        <img src="./logo.svg" alt="" width="140" height="40">
+        <span class="nav-word">aether</span>
+        <span class="nav-ver">v0.3.0</span>
       </a>
-      <nav class="nav-links" aria-label="Primary">
+      <nav class="nav-links" id="nav-links" aria-label="Primary">
         <a href="#features">Features</a>
         <a href="#providers">Providers</a>
         <a href="#quickstart">Quickstart</a>
         <a href="./swarm.html">Swarm</a>
       </nav>
-      <a class="btn btn-ghost nav-cta" href="https://github.com/Aetherdz/aethercode" rel="noopener" target="_blank">GitHub</a>
-      <a class="btn btn-primary nav-cta" href="#quickstart">Get started</a>
+      <div class="nav-actions">
+        <a class="btn btn-ghost nav-cta" href="https://github.com/Aetherdz/aethercode" rel="noopener" target="_blank">GitHub</a>
+        <a class="btn btn-primary nav-cta" href="#quickstart">Get started</a>
+        <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -65,13 +70,24 @@
       </div>
     </section>
 
-    <section class="emblem-section" id="brand">
-      <div class="emblem-card">
-        <img src="./emblem.svg" alt="Aether emblem" width="180" height="180">
-        <div class="emblem-text">
-          <p class="overline">THE MARK</p>
-          <h2>One star. One medium. One tool.</h2>
-          <p class="section-sub">The Aether emblem — a spark star inside a diamond ring, the medium between stars. Built for the terminal, tuned for low RAM, honest about providers.</p>
+    <section class="section section-narrow" id="approach">
+      <div class="section-head">
+        <p class="overline">THE APPROACH</p>
+        <h2>Terminal-native. RAM-light. Key-optional.</h2>
+        <p class="section-sub">Aether is a plain Node CLI with a readline REPL — no React, no Electron, no bloated TUI framework. It starts fast, streams light, and runs anywhere Node does.</p>
+      </div>
+      <div class="approach-grid">
+        <div class="approach-item">
+          <h3>Runs in any terminal</h3>
+          <p>Windows Terminal, iTerm2, GNOME Terminal, VS Code's integrated panel — if it has a shell, Aether works in it.</p>
+        </div>
+        <div class="approach-item">
+          <h3>Sips RAM</h3>
+          <p>Hand-rolled ANSI and ASCII box-drawing instead of a UI framework. A session idles in the tens of MB, not hundreds.</p>
+        </div>
+        <div class="approach-item">
+          <h3>No key, no problem</h3>
+          <p>Ships with the free OpenCode Zen provider. Bring your own key only when you want a different model.</p>
         </div>
       </div>
     </section>
@@ -84,42 +100,42 @@
       </div>
       <div class="bento">
         <article class="card card-wide">
-          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg>
+          <div class="card-head"><span class="card-index">01</span><span class="card-rule" aria-hidden="true"></span></div>
           <h3>Zero setup</h3>
           <p>Ships with the free OpenCode Zen provider — OpenAI-compatible, no API key. Run <code>aether</code> and start chatting.</p>
         </article>
         <article class="card">
-          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>
+          <div class="card-head"><span class="card-index">02</span><span class="card-rule" aria-hidden="true"></span></div>
           <h3>8+ providers</h3>
           <p>zen, openai, anthropic, google, deepseek, openrouter, ollama, and any custom OpenAI-compatible endpoint.</p>
         </article>
         <article class="card">
-          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><rect x="8" y="8" width="8" height="8" rx="1"/></svg>
+          <div class="card-head"><span class="card-index">03</span><span class="card-rule" aria-hidden="true"></span></div>
           <h3>Swarm subagents</h3>
           <p>Decompose any task and run parallel subagents with <code>aether swarm "task"</code>.</p>
         </article>
         <article class="card">
-          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6h.01M10 6h.01"/></svg>
+          <div class="card-head"><span class="card-index">04</span><span class="card-rule" aria-hidden="true"></span></div>
           <h3>Sessions</h3>
           <p>Every chat auto-saves with a title. Browse, resume, or delete with <code>aether sessions</code> — or <code>/resume</code> inside the REPL. Total token usage: <code>aether stats</code>.</p>
         </article>
         <article class="card">
-          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 8h16M4 16h16M7 5l-3 3 3 3M17 13l3 3-3 3"/></svg>
+          <div class="card-head"><span class="card-index">05</span><span class="card-rule" aria-hidden="true"></span></div>
           <h3>Low RAM</h3>
           <p>No React, no Ink. Hand-rolled ANSI and ASCII box-drawing. Lightweight streaming.</p>
         </article>
         <article class="card">
-          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="4" width="20" height="12" rx="2"/><path d="M8 20h8M12 16v4"/><path d="M6 8h.01M9 8h.01M12 8h.01M15 8h.01M18 8h.01"/></svg>
+          <div class="card-head"><span class="card-index">06</span><span class="card-rule" aria-hidden="true"></span></div>
           <h3>MCP tools</h3>
           <p>Connect any Model Context Protocol server in <code>~/.config/aether/mcp.json</code> — the tools join every turn automatically. List them with <code>/mcp</code>.</p>
         </article>
         <article class="card">
-          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/><path d="M8 11h6M11 8v6"/></svg>
+          <div class="card-head"><span class="card-index">07</span><span class="card-rule" aria-hidden="true"></span></div>
           <h3>Recall</h3>
           <p>Cross-session memory: search every past conversation with <code>aether recall "phrase"</code> (or <code>/recall</code>) and jump straight back into the hit. The medium between stars — your agent remembers.</p>
         </article>
         <article class="card card-wide">
-          <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          <div class="card-head"><span class="card-index">08</span><span class="card-rule" aria-hidden="true"></span></div>
           <h3>Cross-platform</h3>
           <p>Windows, macOS, and Linux from the start. Plain <code>node:readline</code> REPL — no heavy TUI framework.</p>
         </article>
@@ -155,15 +171,27 @@
       <ol class="steps">
         <li>
           <span class="step-num">01</span>
-          <div><h3>Install</h3><pre><code>npm install -g aetherdz</code></pre></div>
+          <div class="step-body">
+            <h3>Install</h3>
+            <div class="install-tabs" role="tablist" aria-label="Install method">
+              <button class="install-tab active" data-method="npm" role="tab" aria-selected="true">npm</button>
+              <button class="install-tab" data-method="curl" role="tab" aria-selected="false">curl</button>
+              <button class="install-tab" data-method="npx" role="tab" aria-selected="false">npx</button>
+            </div>
+            <div class="install-pane">
+              <pre class="install-code active" data-pane="npm" role="tabpanel"><code>npm install -g aetherdz</code></pre>
+              <pre class="install-code" data-pane="curl" role="tabpanel" hidden><code>curl -fsSL https://aetherdz.github.io/aether-site/install.sh | sh</code></pre>
+              <pre class="install-code" data-pane="npx" role="tabpanel" hidden><code>npx aetherdz@latest</code></pre>
+            </div>
+          </div>
         </li>
         <li>
           <span class="step-num">02</span>
-          <div><h3>Ask</h3><pre><code>aether "your first question"</code></pre></div>
+          <div class="step-body"><h3>Ask</h3><pre><code>aether "your first question"</code></pre></div>
         </li>
         <li>
           <span class="step-num">03</span>
-          <div><h3>Swarm</h3><pre><code>aether swarm "parallel task"</code></pre></div>
+          <div class="step-body"><h3>Swarm</h3><pre><code>aether swarm "parallel task"</code></pre></div>
         </li>
       </ol>
       <div class="power-row">
