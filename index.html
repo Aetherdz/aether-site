@@ -6,7 +6,7 @@
   <title>Aether — terminal AI coding agent</title>
   <meta name="description" content="Aether is a cross-platform terminal AI coding agent. Chat with LLMs, call tools, and write code straight from your terminal. Free, no API key required.">
   <meta property="og:title" content="Aether — terminal AI coding agent">
-  <meta property="og:description" content="Your terminal, now an AI agent. Free no-key default provider, 8+ providers, swarm subagents, cross-device session sync, low RAM.">
+  <meta property="og:description" content="Your terminal, now an AI agent. Free no-key default provider, 8+ providers, cross-device session sync, low RAM.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://aetherdz.github.io/aether-site/">
   <meta property="og:image" content="https://aetherdz.github.io/aether-site/logo.svg">
@@ -38,7 +38,6 @@
         <a href="#features">Features</a>
         <a href="#providers">Providers</a>
         <a href="#quickstart">Quickstart</a>
-        <a href="./swarm.html">Swarm</a>
       </nav>
       <div class="nav-actions">
         <a class="btn btn-ghost nav-cta" href="https://github.com/Aetherdz/aethercode" rel="noopener" target="_blank">GitHub</a>
@@ -63,7 +62,6 @@
             <code>npm install -g aetherdz</code>
             <span class="copy-hint" id="copy-hint">copy</span>
           </button>
-          <a class="btn btn-ghost" href="./swarm.html">Try the swarm</a>
           <a class="btn btn-ghost" href="https://github.com/Aetherdz/aethercode/blob/main/README.md" rel="noopener" target="_blank">Read the docs</a>
         </div>
         <p class="hero-tag">THE MEDIUM BETWEEN STARS</p>
@@ -120,36 +118,31 @@
         </article>
         <article class="card">
           <div class="card-head"><span class="card-index">03</span><span class="card-rule" aria-hidden="true"></span></div>
-          <h3>Swarm subagents</h3>
-          <p>Decompose any task and run parallel subagents with <code>aether swarm "task"</code>.</p>
-        </article>
-        <article class="card">
-          <div class="card-head"><span class="card-index">04</span><span class="card-rule" aria-hidden="true"></span></div>
           <h3>Sessions</h3>
           <p>Every chat auto-saves with a title. Browse, resume, or delete with <code>aether sessions</code> — or <code>/resume</code> inside the REPL. Total token usage: <code>aether stats</code>.</p>
         </article>
         <article class="card">
-          <div class="card-head"><span class="card-index">05</span><span class="card-rule" aria-hidden="true"></span></div>
+          <div class="card-head"><span class="card-index">04</span><span class="card-rule" aria-hidden="true"></span></div>
           <h3>Light on RAM</h3>
           <p>A Node CLI with a lightweight Ink terminal UI — no Electron, no browser, no bundled Chromium. A session idles in the tens of MB, not hundreds, and set <code>AETHER_NO_TUI=1</code> for the leanest readline REPL.</p>
         </article>
         <article class="card">
-          <div class="card-head"><span class="card-index">06</span><span class="card-rule" aria-hidden="true"></span></div>
+          <div class="card-head"><span class="card-index">05</span><span class="card-rule" aria-hidden="true"></span></div>
           <h3>MCP tools</h3>
           <p>Connect any Model Context Protocol server in <code>~/.config/aether/mcp.json</code> — the tools join every turn automatically. List them with <code>/mcp</code>.</p>
         </article>
         <article class="card">
-          <div class="card-head"><span class="card-index">07</span><span class="card-rule" aria-hidden="true"></span></div>
+          <div class="card-head"><span class="card-index">06</span><span class="card-rule" aria-hidden="true"></span></div>
           <h3>Recall</h3>
           <p>Cross-session memory: search every past conversation with <code>aether recall "phrase"</code> (or <code>/recall</code>) and jump straight back into the hit. The medium between stars — your agent remembers.</p>
         </article>
         <article class="card card-wide">
-          <div class="card-head"><span class="card-index">08</span><span class="card-rule" aria-hidden="true"></span></div>
+          <div class="card-head"><span class="card-index">07</span><span class="card-rule" aria-hidden="true"></span></div>
           <h3>Cross-platform</h3>
           <p>Windows, macOS, and Linux from the start. One Node CLI with a terminal-native UI — no browser, no sandbox, no platform-specific installers.</p>
         </article>
         <article class="card card-wide">
-          <div class="card-head"><span class="card-index">09</span><span class="card-rule" aria-hidden="true"></span></div>
+          <div class="card-head"><span class="card-index">08</span><span class="card-rule" aria-hidden="true"></span></div>
           <h3>Sync across devices</h3>
           <p>Free sessions sync. Point <code>aether sync setup</code> at a private GitHub gist or any synced folder (Dropbox, Drive, Nextcloud, Syncthing), then <code>aether sync push</code> / <code>aether sync pull</code>. Continue on another machine where you left off — no account, no subscription, line-level merge so nothing is lost.</p>
         </article>
@@ -207,10 +200,6 @@
           <span class="step-num">02</span>
           <div class="step-body"><h3>Ask</h3><pre><code>aether "your first question"</code></pre></div>
         </li>
-        <li>
-          <span class="step-num">03</span>
-          <div class="step-body"><h3>Swarm</h3><pre><code>aether swarm "parallel task"</code></pre></div>
-        </li>
       </ol>
       <div class="power-row">
         <p class="power-label">POWER USER</p>
@@ -236,16 +225,6 @@
           <code>npm install -g aetherdz</code>
         </button>
         <a class="btn btn-ghost" href="https://github.com/Aetherdz/aethercode" rel="noopener" target="_blank">Star on GitHub</a>
-      </div>
-    </section>
-
-    <section class="cta cta-swarm">
-      <p class="overline">THE MOVE NOBODY ELSE HAS</p>
-      <h2>See your agent work.</h2>
-      <p>Type a mission. Watch parallel subagents decompose, think, and merge in real time.</p>
-      <div class="hero-cta">
-        <a class="btn btn-primary" href="./swarm.html">Open Swarm Mission Control</a>
-        <a class="btn btn-ghost" href="https://github.com/Aetherdz/aethercode" rel="noopener" target="_blank">View source</a>
       </div>
     </section>
   </main>

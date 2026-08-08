@@ -5,7 +5,6 @@ Static marketing site for [Aether](https://github.com/aethercode/aether-cli), th
 ## Pages
 
 - `index.html` — landing page: hero, bento feature grid, a table of 20+ CLI commands, and provider listings.
-- `swarm.html` — "Swarm Mission Control": describe a mission and watch parallel subagents decompose and merge.
 - `404.html` — custom not-found page.
 - `robots.txt` — crawl directives.
 

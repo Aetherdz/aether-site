@@ -633,11 +633,6 @@ h1 {
 .cta h2 { font-size: clamp(1.5rem, 3.5vw, 2.2rem); margin-bottom: 0.75rem; }
 .cta p { color: var(--muted); margin-bottom: 1.5rem; font-size: 14px; }
 
-.cta-swarm {
-  background: radial-gradient(ellipse at center, rgba(34, 211, 238, 0.07), transparent 70%);
-}
-.cta-swarm .overline { margin-bottom: 1rem; }
-
 /* ---------- footer ---------- */
 
 .footer {
@@ -716,7 +711,7 @@ h1 {
   .reveal { opacity: 1; transform: none; }
 }
 
-/* ---------- shared auth/connect/swarm helpers ---------- */
+/* ---------- shared helpers ---------- */
 
 .sr-only {
   position: absolute;
@@ -1073,127 +1068,7 @@ h1 {
   min-height: 96px;
 }
 
-/* ---------- swarm page ---------- */
-
-.swarm-hero {
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 4rem 1.25rem 2rem;
-  text-align: center;
-}
-.swarm-hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); }
-.swarm-sub {
-  max-width: 560px;
-  margin: 1.25rem auto 2rem;
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.7;
-}
-
-.swarm-input {
-  display: flex;
-  gap: 0.6rem;
-  max-width: 640px;
-  margin: 0 auto;
-}
-.swarm-input input {
-  flex: 1;
-  font-family: var(--mono);
-  font-size: 14px;
-  color: var(--text);
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 0.75em 1em;
-  transition: border-color 0.2s ease;
-}
-.swarm-input input:focus-visible { outline: 2px solid var(--cyan); border-color: var(--cyan); }
-
-.swarm-suggestions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: center;
-  margin-top: 1rem;
-}
-.suggestion {
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--muted);
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 0.4em 0.9em;
-  cursor: pointer;
-  transition: border-color 0.2s ease, color 0.2s ease;
-}
-.suggestion:hover { border-color: var(--cyan); color: var(--cyan); }
-.suggestion:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
-
-.swarm-stage {
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 1.5rem 1.25rem 4rem;
-}
-
-.swarm-idle {
-  text-align: center;
-  color: var(--dim);
-  padding: 3rem 0;
-}
-.swarm-idle-emblem { opacity: 0.35; margin-bottom: 1rem; }
-
-.swarm-status {
-  font-size: 13px;
-  color: var(--cyan);
-  margin-bottom: 1.25rem;
-}
-.swarm-status.done { color: var(--green); }
-
-.swarm-lanes { display: flex; flex-direction: column; gap: 0.75rem; }
-
-.swarm-lane {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 0.9rem 1.1rem;
-  animation: lane-in 0.3s ease both;
-}
-@keyframes lane-in {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: none; }
-}
-
-.lane-head { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.6rem; }
-.lane-num { font-size: 11px; color: var(--violet); font-weight: 700; }
-.lane-title { font-size: 13px; color: var(--text); }
-
-.lane-progress {
-  height: 4px;
-  background: var(--code-bg);
-  border-radius: 2px;
-  overflow: hidden;
-  margin-bottom: 0.5rem;
-}
-.lane-bar {
-  height: 100%;
-  width: 0;
-  background: var(--grad);
-  border-radius: 2px;
-  transition: width 0.12s linear;
-}
-.lane-state { font-size: 11px; color: var(--dim); text-transform: uppercase; letter-spacing: 1px; }
-
-.swarm-cta {
-  text-align: center;
-  padding: 3.5rem 1.25rem;
-  border-top: 1px solid var(--border);
-}
-.swarm-cta h2 { font-size: clamp(1.4rem, 3vw, 2rem); margin-bottom: 0.75rem; }
-.swarm-cta p { color: var(--muted); margin-bottom: 1.25rem; font-size: 14px; }
-
 @media (max-width: 640px) {
-  .swarm-input { flex-direction: column; }
   .key-row { flex-wrap: wrap; }
   .key-input { min-width: 100%; }
 }

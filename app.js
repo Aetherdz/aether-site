@@ -7,7 +7,6 @@
 
   var COMMANDS = [
     ["chat", "start a session"],
-    ["swarm", "parallel subagents"],
     ["use", "switch provider/model"],
     ["providers", "list providers"],
     ["agent <task>", "route to a subagent profile"],
@@ -61,15 +60,14 @@
     { text: "AETHER", cls: "t-aether", delay: 700 },
     { text: "It's a Node CLI with a readline REPL,", cls: "t-out", delay: 450 },
     { text: "hand-rolled ANSI themes, and a", cls: "t-out", delay: 450 },
-    { text: "swarm runner that fans out subagents.", cls: "t-out", delay: 450 },
+    { text: "lock-free session sync built in.", cls: "t-out", delay: 450 },
     { text: "", cls: "", delay: 200 },
-    { text: "$ aether swarm \"map the attack surface\"", cls: "t-cmd", delay: 900 },
-    { text: "spawned 4 subagents in parallel", cls: "t-dim", delay: 600 },
-    { text: "recon  /api - 23 endpoints", cls: "t-out", delay: 450 },
-    { text: "auth  /login - 2 flows", cls: "t-out", delay: 450 },
-    { text: "logic checkout - race window", cls: "t-out", delay: 450 },
-    { text: "oss   deps - 0 critical", cls: "t-out", delay: 450 },
-    { text: "4 results merged in 3.2s", cls: "t-green", delay: 650 },
+    { text: "$ aether \"refactor the auth module\"", cls: "t-cmd", delay: 900 },
+    { text: "planned: agents, tools, tui", cls: "t-dim", delay: 600 },
+    { text: "agents 3 subagents routed", cls: "t-out", delay: 450 },
+    { text: "tools  bash + files + web", cls: "t-out", delay: 450 },
+    { text: "tui    streaming ~ 40 fps", cls: "t-out", delay: 450 },
+    { text: "5 steps merged in 2.8s", cls: "t-green", delay: 650 },
     { text: "", cls: "", delay: 300 },
     { text: "$ ", cls: "t-cmd" }
   ];
