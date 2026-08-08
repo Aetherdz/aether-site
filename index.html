@@ -32,7 +32,7 @@
       <a class="nav-brand" href="#top" aria-label="Aether home">
         <img class="nav-emblem" src="./emblem.svg" alt="" width="26" height="26">
         <span class="nav-word">aether</span>
-        <span class="nav-ver">v0.4.0</span>
+        <span class="nav-ver">v0.5.0</span>
       </a>
       <nav class="nav-links" id="nav-links" aria-label="Primary">
         <a href="#features">Features</a>
@@ -54,7 +54,7 @@
     <section class="hero" id="top">
       <div class="hero-inner">
         <img class="hero-logo" src="./logo.svg" alt="Aether — terminal AI coding agent" width="1200" height="280">
-        <p class="overline"><span class="dot dot-cyan"></span>Aether v0.4.0</p>
+        <p class="overline"><span class="dot dot-cyan"></span>Aether v0.5.0</p>
         <h1>Your terminal,<br>now an <span class="grad">AI agent</span>.</h1>
         <p class="hero-sub">Chat with LLMs, call tools, and write code straight from your terminal.
           Free. No API key required. Low RAM. Cross-platform.</p>
@@ -192,12 +192,14 @@
               <button class="install-tab" data-method="curl" role="tab" aria-selected="false">curl</button>
               <button class="install-tab" data-method="git" role="tab" aria-selected="false">git clone</button>
               <button class="install-tab" data-method="npx" role="tab" aria-selected="false">npx</button>
+              <button class="install-tab" data-method="termux" role="tab" aria-selected="false">Termux</button>
             </div>
             <div class="install-pane">
               <pre class="install-code active" data-pane="npm" role="tabpanel"><code>npm install -g aetherdz</code></pre>
-              <pre class="install-code" data-pane="curl" role="tabpanel" hidden><code>curl -fsSL https://aetherdz.github.io/aether-site/install.sh | sh</code></pre>
+              <pre class="install-code" data-pane="curl" role="tabpanel" hidden><code>curl -fsSL https://raw.githubusercontent.com/Aetherdz/aethercode/main/install.sh | bash</code></pre>
               <pre class="install-code" data-pane="git" role="tabpanel" hidden><code>git clone https://github.com/Aetherdz/aethercode.git && cd aethercode && npm install &amp;&amp; npm link</code></pre>
               <pre class="install-code" data-pane="npx" role="tabpanel" hidden><code>npx aetherdz@latest</code></pre>
+              <pre class="install-code" data-pane="termux" role="tabpanel" hidden><code>pkg install -y nodejs curl tar &amp;&amp; curl -fsSL https://raw.githubusercontent.com/Aetherdz/aethercode/main/install-termux.sh | bash</code></pre>
             </div>
           </div>
         </li>

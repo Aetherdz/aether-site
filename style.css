@@ -673,15 +673,41 @@ h1 {
   .bento { grid-template-columns: repeat(2, 1fr); }
   .commands-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ---------- mobile (phones) ---------- */
+
 @media (max-width: 640px) {
   .nav-links { display: none; }
+  .nav-inner { gap: 0.6rem; padding: 0.6rem 1rem; }
+  .nav-ver { display: none; }
+  .nav-actions { gap: 0.5rem; }
   .bento { grid-template-columns: 1fr; }
   .card-wide { grid-column: span 1; }
   .commands-grid { grid-template-columns: 1fr; }
-  .providers-row { grid-template-columns: 1fr 0.8fr 1.2fr; gap: 0.5rem; padding: 0.6rem 0.9rem; }
-  .hero { padding-top: 3rem; }
-  .terminal-body { font-size: 12px; padding: 0.9rem 1rem; min-height: 300px; }
+  .cmd-chip { flex-direction: column; align-items: flex-start; gap: 0.2rem; }
+  .cmd-desc { text-align: left; }
+  .hero { padding-top: 2.5rem; }
+  .hero-logo { width: min(420px, 100%); margin-bottom: 1.25rem; }
+  h1 { font-size: clamp(1.9rem, 7vw, 2.6rem); }
+  .hero-cta { flex-direction: column; align-items: stretch; max-width: 340px; margin: 0 auto; }
+  .hero-cta .btn { justify-content: center; }
+  .terminal-body { font-size: 11.5px; padding: 0.9rem 1rem; min-height: 280px; }
+  .section { padding: 3rem 1rem; }
   .footer-inner { flex-direction: column; text-align: center; }
+
+  .providers-row { grid-template-columns: 1fr auto; gap: 0.35rem 0.75rem; padding: 0.6rem 1rem; font-size: 12.5px; }
+  .providers-row .p-name { grid-column: 1; }
+  .providers-row .p-not { grid-column: 2; text-align: right; }
+  .providers-row .p-free, .providers-row .p-paid,
+  .providers-row .p-fp, .providers-row .p-local { grid-column: 2; }
+  .providers-row .p-none { grid-column: 2; }
+  .providers-head { display: none; }
+
+  .install-tabs { flex-wrap: wrap; max-width: 100%; }
+  .install-tab { font-size: 11.5px; padding: 0.35em 0.7em; }
+  .install-code code { white-space: normal; word-break: break-word; }
+  .steps li { padding: 1rem; gap: 1rem; }
+  .power-cmds code { font-size: 11px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
