@@ -56,9 +56,11 @@
           that watches the result and re-plans. One static Rust binary — no Node,
           no Electron, no runtime to install.</p>
         <div class="hero-cta">
-          <button class="btn btn-primary" id="copy-install" type="button">
+          <button class="btn btn-primary copy-btn-inline" id="copy-install" type="button" aria-label="Copy install command">
             <code id="install-code">curl -fsSL https://aetherdz.github.io/aether-site/install.sh | sh</code>
-            <span class="copy-hint" id="copy-hint">copy</span>
+            <svg class="icon-copy" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><rect x="5" y="5" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M11 5V3.5a1 1 0 0 0-1-1H3.5a1 1 0 0 0-1 1V10a1 1 0 0 0 1 1H5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+            <svg class="icon-check" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="copy-hint" id="copy-hint" aria-live="polite">copy</span>
           </button>
           <a class="btn btn-ghost" href="#agents" rel="noopener">How it works</a>
         </div>
@@ -180,21 +182,61 @@
           <button class="install-tab" data-method="npx" role="tab" aria-selected="false">npx? no.</button>
         </div>
         <div class="install-pane">
-          <pre class="install-code active" data-pane="curl" role="tabpanel"><code>curl -fsSL https://aetherdz.github.io/aether-site/install.sh | sh</code></pre>
-          <pre class="install-code" data-pane="cargo" role="tabpanel" hidden><code>cargo install --git https://github.com/Aetherdz/aether --locked aether-cli</code></pre>
-          <pre class="install-code" data-pane="git" role="tabpanel" hidden><code>git clone https://github.com/Aetherdz/aether
+          <div class="code-block" data-pane-wrap="curl">
+            <pre class="install-code active" data-pane="curl" role="tabpanel"><code>curl -fsSL https://aetherdz.github.io/aether-site/install.sh | sh</code></pre>
+            <button class="copy-btn" type="button" data-copy-text="curl -fsSL https://aetherdz.github.io/aether-site/install.sh | sh" aria-label="Copy install command">
+              <svg class="icon-copy" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><rect x="5" y="5" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M11 5V3.5a1 1 0 0 0-1-1H3.5a1 1 0 0 0-1 1V10a1 1 0 0 0 1 1H5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+              <svg class="icon-check" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <div class="code-block" data-pane-wrap="cargo" hidden>
+            <pre class="install-code" data-pane="cargo" role="tabpanel" hidden><code>cargo install --git https://github.com/Aetherdz/aether --locked aether-cli</code></pre>
+            <button class="copy-btn" type="button" data-copy-text="cargo install --git https://github.com/Aetherdz/aether --locked aether-cli" aria-label="Copy install command">
+              <svg class="icon-copy" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><rect x="5" y="5" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M11 5V3.5a1 1 0 0 0-1-1H3.5a1 1 0 0 0-1 1V10a1 1 0 0 0 1 1H5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+              <svg class="icon-check" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <div class="code-block" data-pane-wrap="git" hidden>
+            <pre class="install-code" data-pane="git" role="tabpanel" hidden><code>git clone https://github.com/Aetherdz/aether
 cd aether &amp;&amp; cargo build --release
 ./target/release/aether</code></pre>
-          <pre class="install-code" data-pane="termux" role="tabpanel" hidden><code>pkg install -y rust
+            <button class="copy-btn" type="button" data-copy-text="git clone https://github.com/Aetherdz/aether
+cd aether && cargo build --release
+./target/release/aether" aria-label="Copy install command">
+              <svg class="icon-copy" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><rect x="5" y="5" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M11 5V3.5a1 1 0 0 0-1-1H3.5a1 1 0 0 0-1 1V10a1 1 0 0 0 1 1H5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+              <svg class="icon-check" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <div class="code-block" data-pane-wrap="termux" hidden>
+            <pre class="install-code" data-pane="termux" role="tabpanel" hidden><code>pkg install -y rust
 curl -fsSL https://aetherdz.github.io/aether-site/install.sh | sh</code></pre>
-          <pre class="install-code" data-pane="npx" role="tabpanel" hidden><code>npx: command not found — that's the point.
+            <button class="copy-btn" type="button" data-copy-text="pkg install -y rust
+curl -fsSL https://aetherdz.github.io/aether-site/install.sh | sh" aria-label="Copy install command">
+              <svg class="icon-copy" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><rect x="5" y="5" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M11 5V3.5a1 1 0 0 0-1-1H3.5a1 1 0 0 0-1 1V10a1 1 0 0 0 1 1H5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+              <svg class="icon-check" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <div class="code-block" data-pane-wrap="npx" hidden>
+            <pre class="install-code" data-pane="npx" role="tabpanel" hidden><code>npx: command not found — that's the point.
 Aether is a Rust binary. No Node runtime, no registry, no node_modules.</code></pre>
+            <button class="copy-btn" type="button" data-copy-text="npx: command not found — that's the point.
+Aether is a Rust binary. No Node runtime, no registry, no node_modules." aria-label="Copy install command">
+              <svg class="icon-copy" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><rect x="5" y="5" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M11 5V3.5a1 1 0 0 0-1-1H3.5a1 1 0 0 0-1 1V10a1 1 0 0 0 1 1H5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+              <svg class="icon-check" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
         </div>
       </div>
       <div class="power-row">
         <p class="power-label">POWER USER</p>
         <div class="power-cmds">
-          <code>aether use deepseek/deepseek-chat</code><code>aether models</code><code>aether providers</code><code>aether sessions</code><code>aether recall "x"</code><code>aether sync</code><code>aether tui</code>
+          <button class="power-cmd" type="button" data-copy-text="aether use deepseek/deepseek-chat" aria-label="Copy command"><code>aether use deepseek/deepseek-chat</code><svg class="icon-copy" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><rect x="5" y="5" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M11 5V3.5a1 1 0 0 0-1-1H3.5a1 1 0 0 0-1 1V10a1 1 0 0 0 1 1H5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><svg class="icon-check" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="power-cmd" type="button" data-copy-text="aether models" aria-label="Copy command"><code>aether models</code><svg class="icon-copy" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><rect x="5" y="5" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M11 5V3.5a1 1 0 0 0-1-1H3.5a1 1 0 0 0-1 1V10a1 1 0 0 0 1 1H5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><svg class="icon-check" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="power-cmd" type="button" data-copy-text="aether providers" aria-label="Copy command"><code>aether providers</code><svg class="icon-copy" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><rect x="5" y="5" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M11 5V3.5a1 1 0 0 0-1-1H3.5a1 1 0 0 0-1 1V10a1 1 0 0 0 1 1H5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><svg class="icon-check" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="power-cmd" type="button" data-copy-text="aether sessions" aria-label="Copy command"><code>aether sessions</code><svg class="icon-copy" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><rect x="5" y="5" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M11 5V3.5a1 1 0 0 0-1-1H3.5a1 1 0 0 0-1 1V10a1 1 0 0 0 1 1H5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><svg class="icon-check" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="power-cmd" type="button" data-copy-text="aether recall \"x\"" aria-label="Copy command"><code>aether recall "x"</code><svg class="icon-copy" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><rect x="5" y="5" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M11 5V3.5a1 1 0 0 0-1-1H3.5a1 1 0 0 0-1 1V10a1 1 0 0 0 1 1H5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><svg class="icon-check" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="power-cmd" type="button" data-copy-text="aether sync" aria-label="Copy command"><code>aether sync</code><svg class="icon-copy" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><rect x="5" y="5" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M11 5V3.5a1 1 0 0 0-1-1H3.5a1 1 0 0 0-1 1V10a1 1 0 0 0 1 1H5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><svg class="icon-check" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="power-cmd" type="button" data-copy-text="aether tui" aria-label="Copy command"><code>aether tui</code><svg class="icon-copy" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><rect x="5" y="5" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M11 5V3.5a1 1 0 0 0-1-1H3.5a1 1 0 0 0-1 1V10a1 1 0 0 0 1 1H5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><svg class="icon-check" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
       </div>
     </section>
@@ -262,8 +304,10 @@ Aether is a Rust binary. No Node runtime, no registry, no node_modules.</code></
       <h2>Three models. One loop.</h2>
       <p>Install it. Point it at a repo. Watch the router re-plan.</p>
       <div class="hero-cta">
-        <button class="btn btn-primary" type="button" data-copy="curl -fsSL https://aetherdz.github.io/aether-site/install.sh | sh">
+        <button class="btn btn-primary copy-btn-inline" type="button" data-copy="curl -fsSL https://aetherdz.github.io/aether-site/install.sh | sh" aria-label="Copy install command">
           <code>curl -fsSL https://aetherdz.github.io/aether-site/install.sh | sh</code>
+          <svg class="icon-copy" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><rect x="5" y="5" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M11 5V3.5a1 1 0 0 0-1-1H3.5a1 1 0 0 0-1 1V10a1 1 0 0 0 1 1H5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+          <svg class="icon-check" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <a class="btn btn-ghost" href="https://github.com/Aetherdz/aether" rel="noopener" target="_blank">Star on GitHub</a>
       </div>

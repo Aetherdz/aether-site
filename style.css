@@ -230,6 +230,11 @@ html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 .u { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 6px; text-decoration-color: var(--accent); }
 .hero-sub { color: var(--ink-2); max-width: 46ch; margin: 0 0 28px; }
 .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.copy-btn-inline { display: inline-flex; align-items: center; gap: 10px; }
+.copy-btn-inline .icon-check { display: none; }
+.copy-btn-inline.copied .icon-copy { display: none; }
+.copy-btn-inline.copied .icon-check { display: block; }
+.copy-btn-inline code { background: none; border: 0; padding: 0; font-size: 0.82rem; }
 .hero-tag { margin-top: 22px; font-size: 0.8rem; color: var(--muted); }
 .hero-tag code { color: var(--accent); background: var(--accent-soft); border-color: rgba(0, 122, 255, 0.2); }
 .copy-hint { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
@@ -374,6 +379,11 @@ html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 .install-tab:hover { color: var(--ink); }
 .install-tab.active { color: var(--accent); background: var(--accent-soft); box-shadow: inset 0 -2px 0 var(--accent); }
 .install-pane { padding: 22px; }
+.code-block {
+  position: relative;
+  margin-bottom: 12px;
+}
+.code-block:last-child { margin-bottom: 0; }
 .install-code {
   background: var(--term-bg);
   color: var(--term-text);
@@ -386,6 +396,53 @@ html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 }
 .install-code[hidden] { display: none; }
 .install-code code { background: none; border: 0; padding: 0; color: inherit; font-size: inherit; }
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  border: 1px solid var(--hairline-2);
+  border-radius: 7px;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.copy-btn:hover { color: var(--accent); border-color: var(--accent); }
+.copy-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.copy-btn .icon-check { display: none; }
+.copy-btn.copied .icon-copy { display: none; }
+.copy-btn.copied .icon-check { display: block; }
+.copy-btn.copied { color: #22c55e; border-color: #22c55e; }
+.copy-btn-sm { position: static; width: 26px; height: 26px; flex-shrink: 0; }
+.cmd-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.power-cmd {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.power-cmd:hover { color: var(--accent); border-color: var(--accent); }
+.power-cmd code { background: none; border: 0; padding: 0; font-family: inherit; font-size: inherit; }
+.power-cmd .icon-check { display: none; }
+.power-cmd.copied .icon-copy { display: none; }
+.power-cmd.copied .icon-check { display: block; }
+.power-cmd.copied { color: #22c55e; border-color: #22c55e; }
 .power-row { display: flex; align-items: baseline; gap: 18px; margin-top: 22px; flex-wrap: wrap; }
 .power-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); }
 .power-cmds { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -518,6 +575,11 @@ html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
   .commands-grid { grid-template-columns: 1fr; }
   .footer-inner { flex-direction: column; align-items: flex-start; }
   .footer-motto { margin-left: 0; }
+  .copy-btn { width: 34px; height: 34px; top: 10px; right: 10px; }
+  .install-pane { padding: 14px; }
+  .install-code { padding: 14px 14px; font-size: 0.78rem; }
+  .power-cmds { gap: 6px; }
+  .power-cmd { padding: 8px 12px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

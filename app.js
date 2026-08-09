@@ -27,12 +27,22 @@
   function addChip(grid, pair) {
     var chip = document.createElement("div");
     chip.className = "cmd-chip";
+    var top = document.createElement("div");
+    top.className = "cmd-top";
     var code = document.createElement("code");
     code.textContent = "aether " + pair[0];
+    var copy = document.createElement("button");
+    copy.type = "button";
+    copy.className = "copy-btn copy-btn-sm";
+    copy.setAttribute("aria-label", "Copy command: " + code.textContent);
+    copy.setAttribute("data-copy-text", code.textContent);
+    copy.innerHTML = '<svg class="icon-copy" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><rect x="5" y="5" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M11 5V3.5a1 1 0 0 0-1-1H3.5a1 1 0 0 0-1 1V10a1 1 0 0 0 1 1H5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><svg class="icon-check" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    top.appendChild(code);
+    top.appendChild(copy);
     var desc = document.createElement("span");
     desc.className = "cmd-desc";
     desc.textContent = pair[1];
-    chip.appendChild(code);
+    chip.appendChild(top);
     chip.appendChild(desc);
     grid.appendChild(chip);
   }
@@ -115,6 +125,16 @@
 
   /* ---------- copy buttons ---------- */
 
+  function showCopied(btn) {
+    btn.classList.add("copied");
+    btn.setAttribute("aria-label", "Copied");
+    setTimeout(function () {
+      btn.classList.remove("copied");
+      var base = btn.getAttribute("data-copy-label") || "Copy";
+      btn.setAttribute("aria-label", base);
+    }, 1500);
+  }
+
   function setupCopy() {
     var primary = document.getElementById("copy-install");
     var hint = document.getElementById("copy-hint");
@@ -123,8 +143,12 @@
         var codeEl = document.getElementById("install-code");
         var text = codeEl ? codeEl.textContent : "curl -fsSL https://aetherdz.github.io/aether-site/install.sh | sh";
         copyText(text);
+        primary.classList.add("copied");
         hint.textContent = "copied!";
-        setTimeout(function () { hint.textContent = "copy"; }, 1800);
+        setTimeout(function () {
+          primary.classList.remove("copied");
+          hint.textContent = "copy";
+        }, 1800);
       });
     }
 
@@ -132,6 +156,19 @@
     others.forEach(function (btn) {
       btn.addEventListener("click", function () {
         copyText(btn.getAttribute("data-copy"));
+        if (btn.classList.contains("copy-btn-inline")) {
+          showCopied(btn);
+        }
+      });
+    });
+
+    var copyBtns = document.querySelectorAll(".copy-btn[data-copy-text]");
+    copyBtns.forEach(function (btn) {
+      btn.setAttribute("data-copy-label", btn.getAttribute("aria-label") || "Copy");
+      btn.addEventListener("click", function () {
+        var text = btn.getAttribute("data-copy-text") || "";
+        copyText(text);
+        showCopied(btn);
       });
     });
   }
@@ -150,13 +187,17 @@
             b.classList.toggle("active", on);
             b.setAttribute("aria-selected", on ? "true" : "false");
           });
-          var pane = group.parentElement.querySelector(".install-code[data-pane='" + method + "']");
-          if (pane) {
-            var siblings = group.parentElement.querySelectorAll(".install-code");
-            siblings.forEach(function (p) {
-              var on = p === pane;
-              p.classList.toggle("active", on);
-              p.hidden = !on;
+          var wrap = group.parentElement.querySelector(".code-block[data-pane-wrap='" + method + "']");
+          if (wrap) {
+            var wrappers = group.parentElement.querySelectorAll(".code-block[data-pane-wrap]");
+            wrappers.forEach(function (w) {
+              var on = w === wrap;
+              w.hidden = !on;
+              var pane = w.querySelector(".install-code");
+              if (pane) {
+                pane.classList.toggle("active", on);
+                pane.hidden = !on;
+              }
             });
           }
         });
