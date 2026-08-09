@@ -22,7 +22,11 @@ Static marketing site for [Aether](https://github.com/Aetherdz/aether), the Rust
 
 ## Design
 
-Light paper background (`#f4f4f2`), ink text, JetBrains Mono / system mono. No emojis, no color accents beyond ink and rust.
+Color palette mirrors opencode.ai / jcode.sh: white background (`#ffffff`),
+`#f5f5f7` surfaces, ink `#1d1d1f` text, and a blue accent (`#007aff`).
+The terminal mock and install code blocks keep the opencode dark scheme
+(`#0c0c0e` / `#161618`). Body text uses the system sans stack; code uses
+IBM Plex Mono / JetBrains Mono / system mono. No emojis.
 
 ## Local development
 
