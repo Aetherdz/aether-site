@@ -3,71 +3,66 @@
 (function () {
   "use strict";
 
-  /* ---------- data: command list ---------- */
+  /* ---------- data: phase 0 command list ---------- */
 
   var COMMANDS = [
-    ["chat", "start a session"],
-    ["use", "switch provider/model"],
-    ["providers", "list providers"],
-    ["agent <task>", "route to a subagent profile"],
-    ["agents", "list agent profiles"],
-    ["jobs [id]", "background job status"],
-    ["sessions", "browse/resume sessions"],
-    ["sessions resume <id>", "reopen a session"],
-    ["stats", "token usage, all sessions"],
-    ["recall <phrase>", "search all past sessions"],
-    ["mcp", "list connected MCP servers"],
-    ["doctor", "health check"],
-    ["status", "model + cost"],
-    ["upgrade", "update aether"],
-    ["completions", "shell completions"],
-    ["alias", "manage aliases"],
-    ["config", "get/set config"],
-    ["login", "store API key"],
+    ["ask \"<question>\"", "one-shot answer"],
+    ["chat", "interactive session"],
+    ["use <provider>/<model>", "switch provider/model"],
+    ["models", "list available models"],
+    ["providers", "list all providers"],
+    ["login", "store API key locally"],
     ["logout", "remove API key"],
-    ["keys", "list stored keys"],
-    ["cost", "session cost"],
-    ["sync setup gist", "free cross-device sync via GitHub"],
-    ["sync setup folder <path>", "sync via Dropbox/Drive/Nextcloud"],
-    ["sync push", "upload sessions"],
-    ["sync pull", "download + merge sessions"],
+    ["doctor", "health check"],
     ["help", "all commands"]
+  ];
+
+  var ROADMAP = [
+    ["sessions", "auto-titled, resumable — coming"],
+    ["recall \"<phrase>\"", "search past sessions — coming"],
+    ["sync push/pull", "gist or folder sync — coming"],
+    ["mcp", "connect MCP servers — coming"]
   ];
 
   function buildCommands() {
     var grid = document.getElementById("commands-grid");
     if (!grid) return;
-    COMMANDS.forEach(function (pair) {
-      var chip = document.createElement("div");
-      chip.className = "cmd-chip";
-      var code = document.createElement("code");
-      code.textContent = "aether " + pair[0];
-      var desc = document.createElement("span");
-      desc.className = "cmd-desc";
-      desc.textContent = pair[1];
-      chip.appendChild(code);
-      chip.appendChild(desc);
-      grid.appendChild(chip);
-    });
+    COMMANDS.forEach(function (pair) { addChip(grid, pair, ""); });
+    var label = document.createElement("div");
+    label.className = "roadmap-label";
+    label.textContent = "ROADMAP";
+    grid.appendChild(label);
+    ROADMAP.forEach(function (pair) { addChip(grid, pair, "cmd-roadmap"); });
+  }
+
+  function addChip(grid, pair, extra) {
+    var chip = document.createElement("div");
+    chip.className = "cmd-chip" + (extra ? " " + extra : "");
+    var code = document.createElement("code");
+    code.textContent = "aether " + pair[0];
+    var desc = document.createElement("span");
+    desc.className = "cmd-desc";
+    desc.textContent = pair[1];
+    chip.appendChild(code);
+    chip.appendChild(desc);
+    grid.appendChild(chip);
   }
 
   /* ---------- terminal typing animation ---------- */
 
   var SCRIPT = [
-    { text: "$ aether \"explain this codebase\"", cls: "t-cmd" },
-    { text: "aether v0.1.0 - zen", cls: "t-dim", delay: 350 },
+    { text: "$ aether ask \"explain this codebase\"", cls: "t-cmd" },
+    { text: "aether v0.5.0 - rust - zen", cls: "t-dim", delay: 350 },
     { text: "model: deepseek-v4-flash-free", cls: "t-model", delay: 350 },
     { text: "AETHER", cls: "t-aether", delay: 700 },
-    { text: "It's a Node CLI with a readline REPL,", cls: "t-out", delay: 450 },
-    { text: "hand-rolled ANSI themes, and a", cls: "t-out", delay: 450 },
-    { text: "lock-free session sync built in.", cls: "t-out", delay: 450 },
+    { text: "A single static Rust binary —", cls: "t-out", delay: 450 },
+    { text: "no Node, no Electron, no runtime", cls: "t-out", delay: 450 },
+    { text: "to install. Boots in milliseconds.", cls: "t-out", delay: 450 },
     { text: "", cls: "", delay: 200 },
-    { text: "$ aether \"refactor the auth module\"", cls: "t-cmd", delay: 900 },
-    { text: "planned: agents, tools, tui", cls: "t-dim", delay: 600 },
-    { text: "agents 3 subagents routed", cls: "t-out", delay: 450 },
-    { text: "tools  bash + files + web", cls: "t-out", delay: 450 },
-    { text: "tui    streaming ~ 40 fps", cls: "t-out", delay: 450 },
-    { text: "5 steps merged in 2.8s", cls: "t-green", delay: 650 },
+    { text: "$ aether chat", cls: "t-cmd", delay: 900 },
+    { text: "zen: deepseek-v4-flash-free", cls: "t-dim", delay: 600 },
+    { text: "3 steps planned, 3 executed — 1.4s", cls: "t-green", delay: 650 },
+    { text: "19 providers · 0 API keys to start", cls: "t-out", delay: 450 },
     { text: "", cls: "", delay: 300 },
     { text: "$ ", cls: "t-cmd" }
   ];
@@ -136,7 +131,7 @@
     var hint = document.getElementById("copy-hint");
     if (primary && hint) {
       primary.addEventListener("click", function () {
-        copyText("npm install -g aetherdz");
+        copyText("cargo install aether");
         hint.textContent = "copied!";
         setTimeout(function () { hint.textContent = "copy"; }, 1800);
       });
@@ -178,6 +173,31 @@
     });
   }
 
+  /* ---------- FAQ accordion ---------- */
+
+  function setupFaq() {
+    var items = document.querySelectorAll(".faq-item");
+    items.forEach(function (item) {
+      var btn = item.querySelector(".faq-q");
+      var panel = item.querySelector(".faq-a");
+      if (!btn || !panel) return;
+      btn.addEventListener("click", function () {
+        var open = btn.getAttribute("aria-expanded") === "true";
+        items.forEach(function (other) {
+          var otherBtn = other.querySelector(".faq-q");
+          var otherPanel = other.querySelector(".faq-a");
+          if (!otherBtn || !otherPanel) return;
+          otherBtn.setAttribute("aria-expanded", "false");
+          otherPanel.hidden = true;
+        });
+        if (!open) {
+          btn.setAttribute("aria-expanded", "true");
+          panel.hidden = false;
+        }
+      });
+    });
+  }
+
   function copyText(text) {
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(text).catch(function () {
@@ -203,7 +223,7 @@
   /* ---------- reveal on scroll ---------- */
 
   function setupReveal() {
-    var targets = document.querySelectorAll(".section, .cta, .terminal, .providers-box");
+    var targets = document.querySelectorAll(".section, .cta, .terminal, .providers-box, .stats");
     if (!("IntersectionObserver" in window)) {
       targets.forEach(function (t) { t.classList.add("visible"); });
       return;
@@ -251,6 +271,7 @@
     setupCopy();
     setupReveal();
     setupInstallTabs();
+    setupFaq();
     setupNavToggle();
   });
 })();

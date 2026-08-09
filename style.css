@@ -16,6 +16,8 @@
   --green: #22c55e;
   --amber: #f59e0b;
   --red: #ef4444;
+  --rust: #e0552c;
+  --rust-ring: rgba(224, 85, 44, 0.35);
   --on-accent: #ffffff;
   --on-grad: #0a0a14;
   --nav-bg: rgba(10, 10, 20, 0.85);
@@ -47,6 +49,8 @@
   --green: #15803d;
   --amber: #b45309;
   --red: #dc2626;
+  --rust: #b03a14;
+  --rust-ring: rgba(176, 58, 20, 0.3);
   --on-accent: #ffffff;
   --on-grad: #ffffff;
   --nav-bg: rgba(255, 255, 255, 0.85);
@@ -1071,4 +1075,189 @@ h1 {
 @media (max-width: 640px) {
   .key-row { flex-wrap: wrap; }
   .key-input { min-width: 100%; }
+}
+
+/* ---------- stats strip ---------- */
+
+.stats {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 1.25rem 2.5rem;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  border-left: 1px solid var(--hairline);
+}
+.stat:first-child { border-left: none; }
+.stat-num {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 700;
+  color: var(--cyan);
+  letter-spacing: -0.01em;
+}
+.stat-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+/* ---------- performance table ---------- */
+
+.table-scroll { max-width: 860px; margin: 0 auto; overflow-x: auto; }
+.perf-wrap {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  min-width: 560px;
+}
+.perf-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.perf-table th, .perf-table td {
+  padding: 0.8rem 1.1rem;
+  text-align: left;
+  border-top: 1px solid var(--hairline);
+  vertical-align: top;
+  line-height: 1.55;
+}
+.perf-table thead th {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--dim);
+  background: var(--code-bg);
+  border-top: none;
+}
+.perf-table thead th:first-child { width: 24%; }
+.perf-table tbody th { color: var(--text); font-weight: 500; white-space: nowrap; }
+.perf-table td { color: var(--muted); }
+.perf-table td.p-win { color: var(--green); }
+.perf-table code { background: none; padding: 0; }
+.perf-note {
+  max-width: 720px;
+  margin: 1.1rem auto 0;
+  text-align: center;
+  font-size: 12px;
+  color: var(--dim);
+  line-height: 1.6;
+}
+
+/* ---------- FAQ accordion ---------- */
+
+.faq { max-width: 720px; margin: 0 auto; }
+.faq-item {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 0.6rem;
+  overflow: hidden;
+}
+.faq-q {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: transparent;
+  border: 0;
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+.faq-q:hover { color: var(--cyan); }
+.faq-q:focus-visible { outline: 2px solid var(--cyan); outline-offset: -2px; }
+.faq-icon {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  position: relative;
+  color: var(--dim);
+  transition: color 0.15s ease;
+}
+.faq-icon::before,
+.faq-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: currentColor;
+  transition: transform 0.2s ease;
+}
+.faq-icon::before { width: 14px; height: 2px; transform: translate(-50%, -50%); }
+.faq-icon::after { width: 2px; height: 14px; transform: translate(-50%, -50%); }
+.faq-q[aria-expanded="true"] .faq-icon { color: var(--cyan); }
+.faq-q[aria-expanded="true"] .faq-icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+.faq-a {
+  padding: 0 1.25rem 1.1rem;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+.faq-a code { font-size: 0.85em; }
+
+/* ---------- rust badge ---------- */
+
+.cta-badge-row { margin-top: 1.5rem; }
+.rust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--rust);
+  border: 1px solid var(--rust-ring);
+  border-radius: 999px;
+  padding: 0.4em 0.9em;
+  white-space: nowrap;
+}
+.rust-badge::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--rust);
+  box-shadow: 0 0 8px var(--rust);
+}
+.footer .rust-badge { font-size: 10px; padding: 0.3em 0.7em; }
+
+/* ---------- roadmap chips ---------- */
+
+.roadmap-label {
+  grid-column: 1 / -1;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--dim);
+  padding: 1rem 0 0.1rem;
+}
+.cmd-roadmap { border-style: dashed; opacity: 0.8; }
+.cmd-roadmap .cmd-desc { color: var(--amber); }
+
+/* ---------- responsive: stats, perf, faq, badges ---------- */
+
+@media (max-width: 640px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat { border-left: none; border-top: 1px solid var(--hairline); }
+  .stat:nth-child(-n+2) { border-top: none; }
+  .stat:nth-child(odd) { border-right: 1px solid var(--hairline); }
+  .faq-q { font-size: 13px; padding: 0.9rem 1rem; }
+  .faq-a { padding: 0 1rem 0.9rem; }
 }
