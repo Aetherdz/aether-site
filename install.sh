@@ -46,9 +46,11 @@ if [ "$HAVE_CARGO" = "0" ]; then
 fi
 
 # ---- install ----------------------------------------------------------------
-# The crate is published as `aetherdz-cli`; the binary it ships is `aether`.
-say "installing aetherdz-cli (binary: aether) from crates.io …"
-cargo install aetherdz-cli --locked 2>/dev/null || cargo install aetherdz-cli
+# Installed from git (the crate is not on crates.io yet — the published
+# `aether-cli` predates the agent loop). The binary ships as `aether`.
+say "installing aether-cli from https://github.com/Aetherdz/aether …"
+cargo install --git https://github.com/Aetherdz/aether --locked aether-cli \
+  2>/dev/null || cargo install --git https://github.com/Aetherdz/aether aether-cli
 
 # ---- PATH -------------------------------------------------------------------
 CARGO_BIN="${CARGO_HOME:-$HOME/.cargo}/bin"
