@@ -3,41 +3,30 @@
 (function () {
   "use strict";
 
-  /* ---------- data: phase 0 command list ---------- */
+  /* ---------- data: real command list (from crates/aether-cli) ---------- */
 
   var COMMANDS = [
-    ["ask \"<question>\"", "one-shot answer"],
+    ["ask \"<question>\"", "one-shot streaming answer"],
+    ["agent \"<task>\"", "3-model loop: plan → build → route"],
     ["chat", "interactive session"],
     ["use <provider>/<model>", "switch provider/model"],
     ["models", "list available models"],
-    ["providers", "list all providers"],
-    ["login", "store API key locally"],
-    ["logout", "remove API key"],
-    ["doctor", "health check"],
-    ["help", "all commands"]
-  ];
-
-  var ROADMAP = [
-    ["sessions", "auto-titled, resumable — coming"],
-    ["recall \"<phrase>\"", "search past sessions — coming"],
-    ["sync push/pull", "gist or folder sync — coming"],
-    ["mcp", "connect MCP servers — coming"]
+    ["providers", "list all providers with key status"],
+    ["sessions", "list / show / resume / delete"],
+    ["recall \"<phrase>\"", "search past sessions"],
+    ["sync", "push / pull sessions (gist or folder)"],
+    ["tui", "interactive terminal UI"]
   ];
 
   function buildCommands() {
     var grid = document.getElementById("commands-grid");
     if (!grid) return;
-    COMMANDS.forEach(function (pair) { addChip(grid, pair, ""); });
-    var label = document.createElement("div");
-    label.className = "roadmap-label";
-    label.textContent = "ROADMAP";
-    grid.appendChild(label);
-    ROADMAP.forEach(function (pair) { addChip(grid, pair, "cmd-roadmap"); });
+    COMMANDS.forEach(function (pair) { addChip(grid, pair); });
   }
 
-  function addChip(grid, pair, extra) {
+  function addChip(grid, pair) {
     var chip = document.createElement("div");
-    chip.className = "cmd-chip" + (extra ? " " + extra : "");
+    chip.className = "cmd-chip";
     var code = document.createElement("code");
     code.textContent = "aether " + pair[0];
     var desc = document.createElement("span");
@@ -131,7 +120,9 @@
     var hint = document.getElementById("copy-hint");
     if (primary && hint) {
       primary.addEventListener("click", function () {
-        copyText("cargo install aether");
+        var codeEl = document.getElementById("install-code");
+        var text = codeEl ? codeEl.textContent : "curl -fsSL https://aetherdz.github.io/aether-site/install.sh | sh";
+        copyText(text);
         hint.textContent = "copied!";
         setTimeout(function () { hint.textContent = "copy"; }, 1800);
       });
