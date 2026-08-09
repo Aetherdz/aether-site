@@ -230,6 +230,64 @@
     targets.forEach(function (t) { t.classList.add("reveal"); io.observe(t); });
   }
 
+  /* ---------- theme toggle (light / dark) ---------- */
+
+  var THEME_KEY = "aether-theme";
+
+  function getStoredTheme() {
+    try { return localStorage.getItem(THEME_KEY); } catch (e) { return null; }
+  }
+
+  function setStoredTheme(theme) {
+    try { localStorage.setItem(THEME_KEY, theme); } catch (e) { /* noop */ }
+  }
+
+  function systemDark() {
+    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  }
+
+  function applyTheme(theme) {
+    var root = document.documentElement;
+    if (theme === "dark" || theme === "light") {
+      root.setAttribute("data-theme", theme);
+    } else {
+      root.removeAttribute("data-theme");
+    }
+    syncThemeMeta(root, theme);
+    syncThemeToggle(root, theme);
+  }
+
+  function effectiveTheme() {
+    var stored = getStoredTheme();
+    if (stored === "dark" || stored === "light") return stored;
+    return systemDark() ? "dark" : "light";
+  }
+
+  function syncThemeMeta(root, theme) {
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", theme === "dark" ? "#0c0c0e" : "#ffffff");
+  }
+
+  function syncThemeToggle(root, theme) {
+    var btn = document.getElementById("theme-toggle");
+    if (btn) btn.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
+  }
+
+  function setupThemeToggle() {
+    var btn = document.getElementById("theme-toggle");
+    if (!btn) return;
+    btn.addEventListener("click", function () {
+      var next = effectiveTheme() === "dark" ? "light" : "dark";
+      applyTheme(next);
+      setStoredTheme(next);
+    });
+    if (window.matchMedia) {
+      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () {
+        if (!getStoredTheme()) applyTheme(systemDark() ? "dark" : "light");
+      });
+    }
+  }
+
   /* ---------- mobile nav toggle ---------- */
 
   function setupNavToggle() {
@@ -256,6 +314,8 @@
 
   /* ---------- init ---------- */
 
+  applyTheme(effectiveTheme());
+
   document.addEventListener("DOMContentLoaded", function () {
     buildCommands();
     runTerminal();
@@ -263,6 +323,7 @@
     setupReveal();
     setupInstallTabs();
     setupFaq();
+    setupThemeToggle();
     setupNavToggle();
   });
 })();

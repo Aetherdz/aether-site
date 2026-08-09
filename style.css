@@ -1,8 +1,10 @@
 /* AETHER — design system: opencode.ai / jcode.sh palette.
    Light: white bg, #f5f5f7 surfaces, ink #1d1d1f, blue accent #007aff.
-   Terminal keeps the opencode dark scheme (#0c0c0e / #161618). No emojis. */
+   Dark (opencode.ai dark): #0c0c0e bg, #161618 surfaces, #ffffff text.
+   Terminal keeps the opencode dark scheme in both themes. No emojis. */
 
 :root {
+  color-scheme: light;
   --bg: #ffffff;
   --surface: #f5f5f7;
   --surface-2: #fafafc;
@@ -13,6 +15,7 @@
   --faint: #86868b;
   --hairline: #d2d2d7;
   --hairline-2: #e5e5ea;
+  --nav-bg: rgba(255, 255, 255, 0.85);
   --accent: #007aff;
   --accent-hover: #0056b3;
   --accent-soft: rgba(0, 122, 255, 0.08);
@@ -29,6 +32,48 @@
   --radius: 10px;
   --radius-sm: 8px;
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* system dark preference (only when the user hasn't chosen explicitly) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0c0c0e;
+    --surface: #161618;
+    --surface-2: #1c1c1f;
+    --elevated: #1c1c1f;
+    --ink: #ffffff;
+    --ink-2: #c7c7cc;
+    --muted: #a1a1a6;
+    --faint: #68686f;
+    --hairline: #3a3a3c;
+    --hairline-2: #2c2c2e;
+    --nav-bg: rgba(12, 12, 14, 0.85);
+    --accent-hover: #0a84ff;
+    --accent-soft: rgba(0, 122, 255, 0.15);
+    --code-bg: #161618;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* explicit dark choice overrides everything */
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0c0c0e;
+  --surface: #161618;
+  --surface-2: #1c1c1f;
+  --elevated: #1c1c1f;
+  --ink: #ffffff;
+  --ink-2: #c7c7cc;
+  --muted: #a1a1a6;
+  --faint: #68686f;
+  --hairline: #3a3a3c;
+  --hairline-2: #2c2c2e;
+  --nav-bg: rgba(12, 12, 14, 0.85);
+  --accent-hover: #0a84ff;
+  --accent-soft: rgba(0, 122, 255, 0.15);
+  --code-bg: #161618;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 * { box-sizing: border-box; }
@@ -74,7 +119,7 @@ code {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(255, 255, 255, 0.85);
+  background: var(--nav-bg);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--hairline-2);
 }
@@ -127,6 +172,31 @@ code {
 .btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); box-shadow: 0 4px 14px rgba(0, 122, 255, 0.3); }
 .btn-ghost { background: transparent; color: var(--ink); }
 .btn-ghost:hover { background: var(--surface); }
+
+/* ---------- theme toggle ---------- */
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.theme-toggle:hover { background: var(--surface); border-color: var(--muted); }
+.theme-toggle svg { width: 17px; height: 17px; display: block; }
+.theme-toggle .icon-sun { display: none; }
+html[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: block; }
+  :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
+}
 
 /* ---------- hero ---------- */
 
