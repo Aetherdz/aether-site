@@ -4,7 +4,7 @@ Static marketing site for [Aether](https://github.com/Aetherdz/aether), the Rust
 
 ## Pages
 
-- `index.html` — landing page: hero + install tabs (curl / source), platform buttons, measured stats, terminal demo, quick start, 10-card feature grid, FAQ, honest comparison table.
+- `index.html` — landing page: hero + install tabs (curl / source), platform buttons, measured stats, terminal demo, quick start, 7-card feature grid, FAQ, honest comparison table.
 - `404.html` — custom not-found page matching the same design system.
 - `install.sh` — official one-line installer/updater (mirrors `scripts/install.sh` in the main repo).
 - `robots.txt` — crawl directives.
