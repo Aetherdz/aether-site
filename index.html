@@ -50,32 +50,67 @@
 
   <main id="main">
     <section class="hero" id="top">
-      <div class="hero-inner">
-        <p class="overline"><span class="dot dot-ink"></span>Rust terminal agent · three cooperating models</p>
-        <h1>Plan. Build. Route.<br>One <span class="u">agent</span> in your shell.</h1>
-        <p class="hero-sub">Aether is a terminal AI coding agent run by <b>three models</b>:
-          a planner that builds the plan, a builder that executes it, and a router
-          that watches the result and re-plans. One static Rust binary — no Node,
-          no Electron, no runtime to install.</p>
-        <div class="hero-cta">
-          <button class="btn btn-primary copy-btn-inline" id="copy-install" type="button" aria-label="Copy install command">
+      <div class="hero-header">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span class="badge-text">Rust Native · 3-Model Terminal Agent · v0.3.0</span>
+        </div>
+        <h1 class="hero-title">
+          Plan. Build. Route.<br>
+          <span class="hero-gradient">One AI agent in your shell.</span>
+        </h1>
+        <p class="hero-sub">
+          Aether runs <b>three cooperating models</b> inside a high-speed terminal loop:
+          a planner maps the steps, a builder executes against code, and a router adapts to reality.
+          Single static binary — sub-25MB RAM, zero telemetry, zero runtime dependencies.
+        </p>
+        <div class="hero-cta-wrap">
+          <button class="btn btn-primary copy-btn-inline hero-install-btn" id="copy-install" type="button" aria-label="Copy install command">
+            <span class="prompt-symbol">$</span>
             <code id="install-code">curl -fsSL https://aetherdz.github.io/aether-site/install.sh | sh</code>
             <svg class="icon-copy" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><rect x="5" y="5" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M11 5V3.5a1 1 0 0 0-1-1H3.5a1 1 0 0 0-1 1V10a1 1 0 0 0 1 1H5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
             <svg class="icon-check" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <span class="copy-hint" id="copy-hint" aria-live="polite">copy</span>
           </button>
-          <a class="btn btn-ghost" href="#agents" rel="noopener">How it works</a>
+          <a class="btn btn-ghost hero-secondary-btn" href="https://github.com/Aetherdz/aether" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            GitHub
+          </a>
         </div>
-        <p class="hero-tag">OR ALSO: <code>cargo install --git https://github.com/Aetherdz/aether aether-cli</code></p>
+        <div class="hero-specs">
+          <span class="spec-item"><span class="spec-dot">●</span> 269 tests passing</span>
+          <span class="spec-sep">·</span>
+          <span class="spec-item"><span class="spec-dot">●</span> 19 LLM providers</span>
+          <span class="spec-sep">·</span>
+          <span class="spec-item"><span class="spec-dot">●</span> &lt;25MB idle RAM</span>
+          <span class="spec-sep">·</span>
+          <span class="spec-item"><span class="spec-dot">●</span> Free Zen provider</span>
+        </div>
       </div>
 
-      <div class="terminal" role="img" aria-label="Animated aether terminal session">
-        <div class="terminal-bar">
+      <div class="hero-showcase" id="demo" role="region" aria-label="Aether terminal preview">
+        <div class="showcase-bar">
           <span class="traffic"><i class="t-red"></i><i class="t-amber"></i><i class="t-green"></i></span>
-          <span class="terminal-title">aether — 3-model session</span>
-          <span class="terminal-dots" aria-hidden="true">···</span>
+          <div class="showcase-tabs" role="tablist" aria-label="Demo view switcher">
+            <button class="showcase-tab active" id="tab-gif" role="tab" aria-selected="true" aria-controls="pane-gif" type="button">
+              <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/></svg>
+              <span>TUI Walkthrough (GIF)</span>
+            </button>
+            <button class="showcase-tab" id="tab-repl" role="tab" aria-selected="false" aria-controls="pane-repl" type="button">
+              <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M14 2H2a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zm-1 10H3V4h10v8zM4.5 5.5l2.5 2.5-2.5 2.5.707.707L8.414 8 5.207 4.793 4.5 5.5zm4.5 5h3v-1H9v1z"/></svg>
+              <span>Live REPL</span>
+            </button>
+          </div>
+          <span class="showcase-status">● aether v0.3.0 · zen</span>
         </div>
-        <pre class="terminal-body" id="terminal" aria-live="polite"></pre>
+        <div class="showcase-body">
+          <div class="showcase-pane active" id="pane-gif" role="tabpanel" aria-labelledby="tab-gif">
+            <img class="hero-demo-gif" src="./assets/img/demo.gif" alt="Aether live terminal demo showing 3-model planning, building, and routing in TUI" width="1150" height="640">
+          </div>
+          <div class="showcase-pane" id="pane-repl" role="tabpanel" aria-labelledby="tab-repl" hidden>
+            <pre class="terminal-body" id="terminal" aria-live="polite"></pre>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -120,22 +155,6 @@
       <p class="agents-note">The router is the difference: it treats the plan as a hypothesis, not a contract. Execution always feeds back into planning.</p>
     </section>
 
-    <section class="section" id="demo" aria-labelledby="demo-title">
-      <div class="section-head">
-        <p class="overline">LIVE TERMINAL DEMO</p>
-        <h2 id="demo-title">Fast. Symmetrical. Reactive.</h2>
-        <p class="section-sub">Experience the 3-model loop in a high-refresh Rust TUI with the centered ASCII delta logo and live ledger.</p>
-      </div>
-      <div class="demo-card">
-        <div class="terminal-bar">
-          <span class="traffic"><i class="t-red"></i><i class="t-amber"></i><i class="t-green"></i></span>
-          <span class="terminal-title">aether tui — live recorded session</span>
-          <span class="terminal-dots" aria-hidden="true">···</span>
-        </div>
-        <img class="demo-media" src="./assets/img/demo.gif" alt="Aether TUI live session showing symmetrical ASCII delta logo and 3-model plan build route flow" width="1150" height="640" loading="lazy">
-      </div>
-    </section>
-
     <section class="section" id="features" aria-labelledby="features-title">
       <div class="section-head">
         <p class="overline">FEATURES</p>
@@ -173,12 +192,12 @@
           <h3>MCP server</h3>
           <p>Aether speaks the Model Context Protocol over stdio and Streamable HTTP. Your editor and your agents share one context layer.</p>
         </article>
-        <article class="card card-wide">
+        <article class="card">
           <div class="card-head"><span class="card-index">07</span><span class="card-rule" aria-hidden="true"></span></div>
           <h3>Sync across devices</h3>
           <p>Sessions sync to a private GitHub gist or any synced folder — merged line-by-line with origin fingerprints, so concurrent edits never silently overwrite.</p>
         </article>
-        <article class="card card-wide">
+        <article class="card">
           <div class="card-head"><span class="card-index">08</span><span class="card-rule" aria-hidden="true"></span></div>
           <h3>Resilient transport</h3>
           <p>Streaming requests retry with exponential backoff and full jitter on 408/429/5xx — and the system prompt layers per-project overrides via <code>.aether/system-prompt.md</code>.</p>

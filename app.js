@@ -49,6 +49,8 @@
 
   /* ---------- terminal typing animation ---------- */
 
+  var terminalStarted = false;
+
   var SCRIPT = [
     { text: "$ aether ask \"explain this codebase\"", cls: "t-cmd" },
     { text: "aether v0.3.0 - rust - zen", cls: "t-dim", delay: 350 },
@@ -68,7 +70,8 @@
 
   function runTerminal() {
     var el = document.getElementById("terminal");
-    if (!el) return;
+    if (!el || el.dataset.running) return;
+    el.dataset.running = "true";
     var i = 0;
     var char = 0;
     var lineEl = null;
@@ -114,13 +117,43 @@
     setTimeout(function () {
       el.appendChild(caret);
       tick();
-    }, 600);
+    }, 400);
 
     // keep caret pinned at the bottom line
     var moveCaret = function () {
       if (lineEl) el.appendChild(caret);
     };
     setInterval(moveCaret, 400);
+  }
+
+  /* ---------- showcase tabs (GIF vs REPL) ---------- */
+
+  function setupShowcaseTabs() {
+    var tabGif = document.getElementById("tab-gif");
+    var tabRepl = document.getElementById("tab-repl");
+    var paneGif = document.getElementById("pane-gif");
+    var paneRepl = document.getElementById("pane-repl");
+    if (!tabGif || !tabRepl || !paneGif || !paneRepl) return;
+
+    function switchTab(showGif) {
+      tabGif.classList.toggle("active", showGif);
+      tabGif.setAttribute("aria-selected", showGif ? "true" : "false");
+      tabRepl.classList.toggle("active", !showGif);
+      tabRepl.setAttribute("aria-selected", !showGif ? "true" : "false");
+
+      paneGif.classList.toggle("active", showGif);
+      paneGif.hidden = !showGif;
+      paneRepl.classList.toggle("active", !showGif);
+      paneRepl.hidden = showGif;
+
+      if (!showGif && !terminalStarted) {
+        terminalStarted = true;
+        runTerminal();
+      }
+    }
+
+    tabGif.addEventListener("click", function () { switchTab(true); });
+    tabRepl.addEventListener("click", function () { switchTab(false); });
   }
 
   /* ---------- copy buttons ---------- */
@@ -359,7 +392,7 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     buildCommands();
-    runTerminal();
+    setupShowcaseTabs();
     setupCopy();
     setupReveal();
     setupInstallTabs();
