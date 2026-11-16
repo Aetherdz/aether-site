@@ -4,3 +4,4 @@ Allow: /
 # AETHER terminal AI coding agent
 # Site: https://aetherdz.github.io/aether-site/
 # Main repo: https://github.com/Aetherdz/aether
+Sitemap: https://aetherdz.github.io/aether-site/sitemap.xml
